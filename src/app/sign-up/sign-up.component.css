@@ -1,0 +1,21 @@
+.signup-bg {
+  background: rgba(41,171,226,1);
+  background: -moz-linear-gradient(left, rgba(41,171,226,1) 0%, rgba(0,113,188,1) 100%);
+  /*background: -webkit-gradient(left top, right top, color-stop(0%, rgba(41,171,226,1)), color-stop(100%, rgba(0,113,188,1)));*/
+  background: -webkit-linear-gradient(left, rgba(41,171,226,1) 0%, rgba(0,113,188,1) 100%);
+  background: -o-linear-gradient(left, rgba(41,171,226,1) 0%, rgba(0,113,188,1) 100%);
+  background: -ms-linear-gradient(left, rgba(41,171,226,1) 0%, rgba(0,113,188,1) 100%);
+  background: linear-gradient(to right, rgba(41,171,226,1) 0%, rgba(0,113,188,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29abe2', endColorstr='#0071bc', GradientType=1 );
+  height: calc(100vh - 20px);
+}
+
+.width100Percent {
+  width: 100%;
+  max-width: 500px;
+}
+
+.paddingLeftRight20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
