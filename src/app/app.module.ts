@@ -17,6 +17,14 @@ import {LoginComponent} from './login/login.component';
 import {FirebaseLoginComponent} from './firebase-login/firebase-login.component';
 
 import config from './Configs';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MdButtonModule,
+  MdCardModule,
+  MdCheckboxModule, MdDatepickerModule, MdIconModule, MdInputModule, MdListModule, MdProgressSpinnerModule,
+  MdSelectModule, MdTabsModule,
+  MdToolbarModule
+} from '@angular/material';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -42,7 +50,19 @@ const appRoutes: Routes = [
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdInputModule,
+    MdSelectModule,
+    MdToolbarModule,
+    MdListModule,
+    MdCardModule,
+    MdTabsModule,
+    MdButtonModule,
+    MdIconModule,
+    MdProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
