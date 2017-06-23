@@ -19,3 +19,8 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.paddingTopBottom10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
