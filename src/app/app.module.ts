@@ -1,16 +1,51 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import {AngularFireModule} from 'angularfire2';
+
+// New imports to update based on AngularFire2 version 4
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
+import {MainComponent} from './main/main.component';
+import {LoginComponent} from './login/login.component';
+import {FirebaseLoginComponent} from './firebase-login/firebase-login.component';
+
+import config from './Configs';
+export const firebaseConfig = config.firebase;
+
+const appRoutes: Routes = [
+  {path: 'main', component: MainComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'fb', component: FirebaseLoginComponent},
+  {path: '**', component: MainComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    MainComponent,
+    FirebaseLoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
