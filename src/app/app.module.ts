@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'fb', component: FirebaseLoginComponent},
-  {path: '**', component: MainComponent}
+  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({
