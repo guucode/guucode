@@ -1,27 +1,29 @@
-<div class="login-bg" style="padding: 10px;">
-  <div style="margin: 20px 0 0 0;">
-    <div style="padding-left: 15px;">
-      <img src="../../assets/images/logo-png.png" alt="logo" style="max-width: 150px; max-height: 150px; display: block; margin: 0 auto;">
+<form #formData='ngForm' (ngSubmit)="emailLogin(formData)">
+  <div class="login-bg" style="padding: 10px;">
+    <div style="margin: 20px 0 0 0;">
+      <div style="padding-left: 15px;">
+        <img src="../../assets/images/logo-png.png" alt="logo" style="max-width: 150px; max-height: 150px; display: block; margin: 0 auto;">
+      </div>
+      <p class="txtCenter txtWhite" style="font-size: 30px; margin: 5px 0; font-weight: 200;">GUUSAVE</p>
     </div>
-    <p class="txtCenter txtWhite" style="font-size: 30px; margin: 5px 0; font-weight: 200;">GUUSAVE</p>
-  </div>
-  <div class="paddingLeftRight20">
-    <md-input-container class="width100Percent">
-      <input mdInput placeholder="EMAIL" type="email">
-    </md-input-container>
-    <md-input-container class="width100Percent">
-      <input mdInput placeholder="PASSWORD" type="password">
-    </md-input-container>
-    <a href="#"><p class="txt14px" style="text-align: right; margin-top: 0;">FORGOT?</p></a>
-  </div>
-  <div class="paddingTopBottom10 paddingLeftRight20">
-    <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;">LOG IN</button>
-    <p class="txtCenter txt14px txtWhite">OR</p>
-    <div>
-      <img src="../../assets/images/gPlus-btn.png" alt="sign in with google plus" class="width100Percent">
+    <div class="paddingLeftRight20">
+      <md-input-container class="width100Percent">
+        <input mdInput placeholder="EMAIL" type="email" (ngModel)="email" name="email">
+      </md-input-container>
+      <md-input-container class="width100Percent">
+        <input mdInput placeholder="PASSWORD" type="password" (ngModel)="password" name="password">
+      </md-input-container>
+      <a href="#"><p class="txt14px" style="text-align: right; margin-top: 0;">FORGOT?</p></a>
+    </div>
+    <div class="paddingTopBottom10 paddingLeftRight20">
+      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;">LOG IN</button>
+      <p class="txtCenter txt14px txtWhite">OR</p>
+      <div (click)="googleLogin()">
+        <img src="../../assets/images/gPlus-btn.png" alt="sign in with google plus" style="max-width: 100%;">
+      </div>
+    </div>
+    <div routerLink="/signup" class="width100Percent" style="position: absolute; bottom: 0; left: 0; height: 60px; background-color: rgba(255, 255, 255, 0.24);">
+      <p class="txtCenter txtWhite">Don't have an account? <b>SIGN UP!</b></p>
     </div>
   </div>
-  <div routerLink="/sign-up" class="width100Percent" style="position: absolute; bottom: 0; left: 0; height: 60px; background-color: rgba(255, 255, 255, 0.24);">
-    <p class="txtCenter txtWhite">Don't have an account? <b>SIGN UP!</b></p>
-  </div>
-</div>
+</form>
