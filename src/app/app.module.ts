@@ -25,11 +25,13 @@ import {
   MdSelectModule, MdTabsModule,
   MdToolbarModule
 } from '@angular/material';
+import { SignUpComponent } from './sign-up/sign-up.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'sign-up', component: SignUpComponent},
   {path: 'home', component: HomeComponent},
   {path: 'fb', component: FirebaseLoginComponent},
   {path: '**', component: LoginComponent}
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     MainComponent,
-    FirebaseLoginComponent
+    FirebaseLoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
