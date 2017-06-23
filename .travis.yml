@@ -15,6 +15,18 @@ before_script:
   - cd functions
   - npm install
   - cd ..
+  - cp src/app/Configs/index.ts.local src/app/Configs/index.ts
+  - 'echo "export default {" >> index.ts'
+  - 'echo "  firebase: {" >> index.ts'
+  - 'echo "    \"apiKey\": \"${FIREBASE_API_KEY}\"," >> index.ts'
+  - 'echo "    \"authDomain\": \"${FIREBASE_AUTH_DOMAIN}\"," >> index.ts'
+  - 'echo "    \"databaseURL\": \"${FIREBASE_DATABASE_URL}\"," >> index.ts'
+  - 'echo "    \"projectId\": \"${FIREBASE_PROJECT_ID}\"," >> index.ts'
+  - 'echo "    \"storageBucket\": \"${FIREBASE_STORAGE_BUCKET}\"," >> index.ts'
+  - 'echo "    \"messagingSenderId\": \"${FIREBASE_MESSAGING_SENDER_ID}\"" >> index.ts'
+  - 'echo "    }" >> index.ts'
+  - 'echo "  }" >> index.ts'
+
 
 script:
   - ng build --prod
