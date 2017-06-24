@@ -61,34 +61,36 @@ export class HomeComponent implements OnInit {
       const data = db.object('/accounts/' + this.uid + "/data/" + year + "/" + month + "/" + date, {preserveSnapshot: true});
       data.subscribe(queriedItems => {
         let result = queriedItems.val();
-        if (result.incomeList.length > 0 || result.paymentList.length > 0) {
-          this.income = result.incomeList;
-          this.payment = result.paymentList;
+        if (result) {
+          if (result.incomeList.length > 0 || result.paymentList.length > 0) {
+            this.income = result.incomeList;
+            this.payment = result.paymentList;
 
-          this.income = this.income.map((item) => {
-            item['type'] = 0;
-            this.sumIncome = this.sumIncome + item['amount'];
-            return item;
-          });
+            this.income = this.income.map((item) => {
+              item['type'] = 0;
+              this.sumIncome = this.sumIncome + item['amount'];
+              return item;
+            });
 
-          this.payment = this.payment.map((item) => {
-            item['type'] = 1;
-            this.sumPayment = this.sumPayment + item['amount'];
-            return item;
-          });
+            this.payment = this.payment.map((item) => {
+              item['type'] = 1;
+              this.sumPayment = this.sumPayment + item['amount'];
+              return item;
+            });
 
-          let resulttt = this.income.concat(this.payment);
+            let resulttt = this.income.concat(this.payment);
 
-          this.data = resulttt.sort((a, b) => {
-            if (a.timestamp < b.timestamp) {
-              return -1;
-            }
-            if (a.timestamp > b.timestamp) {
-              return 1;
-            }
-            // a must be equal to b
-            return 0;
-          });
+            this.data = resulttt.sort((a, b) => {
+              if (a.timestamp < b.timestamp) {
+                return -1;
+              }
+              if (a.timestamp > b.timestamp) {
+                return 1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }
         }
       });
     }
