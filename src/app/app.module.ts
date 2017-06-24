@@ -22,12 +22,17 @@ import {
   MdButtonModule,
   MdCardModule,
   MdCheckboxModule, MdDatepickerModule, MdIconModule, MdInputModule, MdListModule, MdProgressSpinnerModule,
-  MdSelectModule, MdTabsModule,
-  MdToolbarModule
+  MdSelectModule,
+  MdTabsModule,
+  MdRadioModule,
+  MdToolbarModule,
+  MdSliderModule,
+  MdSlideToggleModule
 } from '@angular/material';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListItemDayComponent } from './list-item-day/list-item-day.component';
+import {CreateitemComponent} from './createitem/createitem.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -37,6 +42,7 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'list-item/:type', component: ListItemComponent},
   {path: 'fb', component: FirebaseLoginComponent},
+  {path: 'createitem', component: CreateitemComponent},
   {path: '**', component: LoginComponent}
 ];
 
@@ -49,7 +55,8 @@ const appRoutes: Routes = [
     FirebaseLoginComponent,
     SignUpComponent,
     ListItemComponent,
-    ListItemDayComponent
+    ListItemDayComponent,
+    CreateitemComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +77,10 @@ const appRoutes: Routes = [
     MdTabsModule,
     MdButtonModule,
     MdIconModule,
-    MdProgressSpinnerModule
+    MdRadioModule,
+    MdSliderModule,
+    MdProgressSpinnerModule,
+    MdSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

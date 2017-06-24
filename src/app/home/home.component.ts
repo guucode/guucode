@@ -87,6 +87,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  /* link to create */
+  go2create()  {
+    this.router.navigate(['/createitem']);
+  }
 }
 /*end class*/
