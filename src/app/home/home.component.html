@@ -1,16 +1,91 @@
 <div class="main-bg" style="height: calc(100vh);">
-  <md-toolbar style="background-colot: white;">
+  <md-toolbar style="background-color: white;">
     <div>
       <img src="../../assets/images/user.ico" alt="User icon" style="width: 35px; vertical-align: middle;">
     </div>
-    <h4 style="width: 100%; text-align: center;">สรุปยอดเงิน</h4>
-    <i class="material-icons light-blue-color" style="font-size: 30px;">widgets</i>
+    <h4 style="width: 100%; text-align: center; font-family: 'Prompt', sans-serif;">สรุปยอดเงิน</h4>
+    <i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i>
   </md-toolbar>
-  <div style="padding: 0 20px;">
+  <div class="content-container" style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
+    <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
+    <!-- Circles displaying income&expense --->
+    <div style="max-width: 260px; margin: 0 auto 20px;">
+      <div class="bg-white btn-shadow" style="width: 100px; height: 100px; border-radius: 50%">
+        <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
+          <p class="upper-text">รายรับ</p>
+          <p class="bottom-text" style="font-size: 30px; font-weight: 400;">20K</p>
+        </div>
+      </div>
+      <div class="bg-white btn-shadow"
+           style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px;">
+        <div class="txt-light-grey" style="overflow: auto; text-align: center;">
+          <p class="upper-text" style="font-size: 20px;">รายจ่าย</p>
+          <p class="bottom-text" style="font-size: 60px; font-weight: 400;">13K</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container" style="padding: 10px;">
-    <button md-raised-button (click)="logout()" color="warn">Logout</button>
+  <!-- show total money left -->
+  <div class="content-container paddingLeftRight20" style="margin-bottom: 20px;">
+    <div class="border-light-blue" style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px;">
+      <div style="display: inline-block; width: 45%;">
+        <p style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
+      </div>
+      <div style="display: inline-block; width: 45%;">
+        <p class="txt-light-blue" style="margin: 0; margin-left: 10px; text-align: center;">7,000 บาท</p>
+      </div>
+    </div>
   </div>
+  <!-- list -->
+  <div class="content-container paddingLeftRight20">
+    <div class="bg-white" style="max-height: calc(100vh - 400px); overflow-y: auto;">
+      <md-list style="padding: 0;">
+        <md-list-item class="border-bottom-light-grey">
+          <p class="txt-income" style="width: 100%;">
+            <span>เงินเดือน</span>
+            <span style="float: right;">+ 20,000</span>
+          </p>
+        </md-list-item>
+        <md-list-item class="border-bottom-light-grey">
+          <p class="txt-expense" style="width: 100%;">
+            <span>ค่างวดรถ</span>
+            <span style="float: right;">- 8,000</span>
+          </p>
+        </md-list-item>
+        <md-list-item class="border-bottom-light-grey">
+          <p class="txt-expense" style="width: 100%;">
+            <span>ค่าเช่าบ้าน</span>
+            <span style="float: right;">- 4,000</span>
+          </p>
+        </md-list-item>
+        <md-list-item class="border-bottom-light-grey">
+          <p class="txt-expense" style="width: 100%;">
+            <span>ค่าดูหนัง</span>
+            <span style="float: right;">- 200</span>
+          </p>
+        </md-list-item>
+        <md-list-item class="border-bottom-light-grey">
+          <p class="txt-expense" style="width: 100%;">
+            <span>MK</span>
+            <span style="float: right;">- 900</span>
+          </p>
+        </md-list-item>
+        <md-list-item class="border-bottom-light-grey">
+          <p class="txt-income" style="width: 100%;">
+            <span>งานฟรีแลนซ์</span>
+            <span style="float: right;">+ 3,000</span>
+          </p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+
+  <button md-fab class="bg-light-blue" style="position: fixed; bottom: 20px; right: 20px;">
+    <md-icon>add</md-icon>
+  </button>
+  <!--<div class="container" style="padding: 10px;">-->
+  <!--<button md-raised-button (click)="logout()" color="warn">Logout</button>-->
+  <!--</div>-->
 </div>
 
 
