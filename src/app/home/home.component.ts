@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import _ from 'lodash';
 
 import {MdDialog, MdDialogRef} from '@angular/material';
 
@@ -23,10 +24,25 @@ export class HomeComponent implements OnInit {
   public photoURL = '';
   // public user: Observable<firebase.User>;
   // public userInfo: Observable<firebase.UserInfo>;
+  // data: FirebaseListObservable<any[]>;
+  // data: Array<any[]>;
+  // income: Array<any[]>;
+  // payment: Array<any[]>;
+  public data = [];
+  public income = [];
+  public sumIncome: number = 0;
+  public payment = [];
+  public sumPayment: number = 0;
 
   selectedOption: string;
 
-  constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router, public dialog: MdDialog) {
+  constructor(public afAuth: AngularFireAuth, private router: Router, public db: AngularFireDatabase, public dialog: MdDialog) {
+    const myDate = new Date();
+    const date = myDate.getDate();
+    const month = myDate.getMonth() + 1;
+    const year = myDate.getFullYear();
+
+    /*check auth*/
     if (!('uid' in localStorage)) {
       this.router.navigate(['/login']);
       return;
@@ -40,7 +56,45 @@ export class HomeComponent implements OnInit {
     this.requestPermission(messaging);
     this.onTokenRefresh(messaging);
 
+    /*get data*/
+    if (!('data' in localStorage)) {
+      const data = db.object('/accounts/' + this.uid + "/data/" + year + "/" + month + "/" + date, {preserveSnapshot: true});
+      data.subscribe(queriedItems => {
+        let result = queriedItems.val();
+        if (result.incomeList.length > 0 || result.paymentList.length > 0) {
+          this.income = result.incomeList;
+          this.payment = result.paymentList;
+
+          this.income = this.income.map((item) => {
+            item['type'] = 0;
+            this.sumIncome = this.sumIncome + item['amount'];
+            return item;
+          });
+
+          this.payment = this.payment.map((item) => {
+            item['type'] = 1;
+            this.sumPayment = this.sumPayment + item['amount'];
+            return item;
+          });
+
+          let resulttt = this.income.concat(this.payment);
+
+          this.data = resulttt.sort((a, b) => {
+            if (a.timestamp < b.timestamp) {
+              return -1;
+            }
+            if (a.timestamp > b.timestamp) {
+              return 1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+        }
+      });
+    }
   }
+
+  /*end cons*/
 
   openResetPasswordDialog() {
     const dialogRef = this.dialog.open(ResetPasswordDialogComponent, {
@@ -124,9 +178,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*end func*/
+
   /* link to create */
   go2create() {
     this.router.navigate(['/createitem']);
   }
+
+  /*end func*/
 }
 /*end class*/
