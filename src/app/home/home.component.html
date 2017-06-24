@@ -22,69 +22,76 @@
       <div (click)="sidenav.open()">
         <i class="material-icons txt-light-blue" style="font-size: 30px; vertical-align: middle;">view_headline</i>
       </div>
-    <h4 style="width: 100%; text-align: center; font-family: 'Prompt', sans-serif;">สรุปยอดเงิน</h4>
-    <!-- i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i -->
-    <!--<i class="material-icons txt-light-blue" style="font-size: 30px;">format_list_bulleted</i>-->
-  </md-toolbar>
-  <div class="content-container paddingLeftRight20" style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
-    <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
-    <!-- Circles displaying income&expense --->
-    <div routerLink="/list-item" style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
-      <div class="bg-white btn-shadow"
-           style="width: 100px; height: 100px; border-radius: 50%; margin-left: 25px;">
-        <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
-          <p class="upper-text">รายรับ</p>
-          <p class="bottom-text" style="font-size: 30px; font-weight: 400;" *ngIf="sumIncome >= 1000000">{{(sumIncome/1000000).toFixed(0)}}M</p>
-          <p class="bottom-text" style="font-size: 30px; font-weight: 400;" *ngIf="sumIncome >= 1000">{{(sumIncome/1000).toFixed(0)}}K</p>
-          <p class="bottom-text" style="font-size: 30px; font-weight: 400;" *ngIf="sumIncome < 1000">{{sumIncome}}</p>
+      <h4 style="width: 100%; text-align: center; font-family: 'Prompt', sans-serif;">สรุปยอดเงิน</h4>
+      <!-- i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i -->
+      <!--<i class="material-icons txt-light-blue" style="font-size: 30px;">format_list_bulleted</i>-->
+    </md-toolbar>
+    <div class="content-container paddingLeftRight20"
+         style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
+      <p style="text-align: right;">วัน{{day}} ที่ {{date}} {{month}} {{year+543}}</p>
+      <!-- Circles displaying income&expense --->
+      <div routerLink="/list-item" style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
+        <div class="bg-white btn-shadow"
+             style="width: 100px; height: 100px; border-radius: 50%; margin-left: 25px;">
+          <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
+            <p class="upper-text">รายรับ</p>
+            <p class="bottom-text" style="font-size: 30px; font-weight: 400;" *ngIf="sumIncome >= 1000000">
+              {{(sumIncome/1000000).toFixed(0)}}M</p>
+            <p class="bottom-text" style="font-size: 30px; font-weight: 400;" *ngIf="sumIncome >= 1000">
+              {{(sumIncome/1000).toFixed(0)}}K</p>
+            <p class="bottom-text" style="font-size: 30px; font-weight: 400;" *ngIf="sumIncome < 1000">{{sumIncome}}</p>
+          </div>
         </div>
-      </div>
-      <div class="bg-white btn-shadow"
-           style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px; margin-right: 25px;">
-        <div class="txt-light-grey" style="overflow: auto; text-align: center;">
-          <p class="upper-text" style="font-size: 20px;">รายจ่าย</p>
-          <p class="bottom-text" style="font-size: 60px; font-weight: 400;" *ngIf="sumPayment >= 1000000">{{(sumPayment/1000000).toFixed(0)}}M</p>
-          <p class="bottom-text" style="font-size: 60px; font-weight: 400;" *ngIf="sumPayment >= 1000">{{(sumPayment/1000).toFixed(0)}}K</p>
-          <p class="bottom-text" style="font-size: 60px; font-weight: 400;" *ngIf="sumPayment < 1000">{{sumPayment}}</p>
+        <div class="bg-white btn-shadow"
+             style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px; margin-right: 25px;">
+          <div class="txt-light-grey" style="overflow: auto; text-align: center;">
+            <p class="upper-text" style="font-size: 20px;">รายจ่าย</p>
+            <p class="bottom-text" style="font-size: 60px; font-weight: 400;" *ngIf="sumPayment >= 1000000">
+              {{(sumPayment/1000000).toFixed(0)}}M</p>
+            <p class="bottom-text" style="font-size: 60px; font-weight: 400;" *ngIf="sumPayment >= 1000">
+              {{(sumPayment/1000).toFixed(0)}}K</p>
+            <p class="bottom-text" style="font-size: 60px; font-weight: 400;" *ngIf="sumPayment < 1000">
+              {{sumPayment}}</p>
+          </div>
         </div>
-      </div>
-      <!--<div>-->
-      <!--<a md-mini-fab routerLink="/list-item/all" style="position: absolute; right: 0; bottom: 0; background-color: white;">-->
-      <!--<i class="material-icons" style="color: rgb(112, 114, 114);">assignment</i>-->
-      <!--</a>-->
-      <!--</div>-->
-    </div>
-  </div>
-  <!-- show total money left -->
-  <div class="content-container paddingLeftRight20" style="margin-bottom: 20px;">
-    <div class="border-light-blue"
-         style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px; background: linear-gradient(to left, #FFFFFF 50%, rgb(90, 180, 234) 50%);">
-      <div style="display: inline-block; width: 45%;">
-        <p class="txt-white" style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
-      </div>
-      <div style="display: inline-block; width: 45%;">
-        <p class="txt-light-blue" style="margin: 0; margin-left: 10px; text-align: center;">{{(sumIncome - sumPayment).toLocaleString()}} บาท</p>
+        <!--<div>-->
+        <!--<a md-mini-fab routerLink="/list-item/all" style="position: absolute; right: 0; bottom: 0; background-color: white;">-->
+        <!--<i class="material-icons" style="color: rgb(112, 114, 114);">assignment</i>-->
+        <!--</a>-->
+        <!--</div>-->
       </div>
     </div>
-  </div>
+    <!-- show total money left -->
+    <div class="content-container paddingLeftRight20" style="margin-bottom: 20px;">
+      <div class="border-light-blue"
+           style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px; background: linear-gradient(to left, #FFFFFF 50%, rgb(90, 180, 234) 50%);">
+        <div style="display: inline-block; width: 45%;">
+          <p class="txt-white" style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
+        </div>
+        <div style="display: inline-block; width: 45%;">
+          <p class="txt-light-blue" style="margin: 0; margin-left: 10px; text-align: center;">{{(sumIncome -
+            sumPayment).toLocaleString()}} บาท</p>
+        </div>
+      </div>
+    </div>
 
-  <!-- list -->
-  <div class="content-container paddingLeftRight20">
-    <div class="bg-white" style="max-height: calc(100vh - 475px); overflow-y: auto;">
-      <md-list style="padding: 0;">
-        <md-list-item class="border-bottom-light-grey" *ngFor="let item of data">
-          <p class="txt-income" style="width: 100%;" *ngIf="item.type == 0">
-            <span>{{item.typeName}}</span>
-            <span style="float: right;">+ {{item.amount.toLocaleString()}}</span>
-          </p>
-          <p class="txt-expense" style="width: 100%;" *ngIf="item.type == 1">
-            <span>{{item.typeName}}</span>
-            <span style="float: right;">- {{item.amount.toLocaleString()}}</span>
-          </p>
-        </md-list-item>
-      </md-list>
+    <!-- list -->
+    <div class="content-container paddingLeftRight20">
+      <div class="bg-white" style="max-height: calc(100vh - 475px); overflow-y: auto;">
+        <md-list style="padding: 0;">
+          <md-list-item class="border-bottom-light-grey" *ngFor="let item of data">
+            <p class="txt-income" style="width: 100%;" *ngIf="item.type == 0">
+              <span>{{item.typeName}}</span>
+              <span style="float: right;">+ {{item.amount.toLocaleString()}}</span>
+            </p>
+            <p class="txt-expense" style="width: 100%;" *ngIf="item.type == 1">
+              <span>{{item.typeName}}</span>
+              <span style="float: right;">- {{item.amount.toLocaleString()}}</span>
+            </p>
+          </md-list-item>
+        </md-list>
+      </div>
     </div>
-  </div>
 
     <button md-fab (click)="go2create()"
             style="position: fixed; bottom: 20px; right: 20px; background-color: rgb(90, 180, 234);">

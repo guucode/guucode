@@ -22,12 +22,14 @@ export class HomeComponent implements OnInit {
   public email = '';
   public displayName = '';
   public photoURL = '';
+
+  public day: string = '';
+  public date: number = 0;
+  public month: string = '';
+  public year: number = 0;
   // public user: Observable<firebase.User>;
   // public userInfo: Observable<firebase.UserInfo>;
   // data: FirebaseListObservable<any[]>;
-  // data: Array<any[]>;
-  // income: Array<any[]>;
-  // payment: Array<any[]>;
   public data = [];
   public income = [];
   public sumIncome: number = 0;
@@ -38,9 +40,97 @@ export class HomeComponent implements OnInit {
 
   constructor(public afAuth: AngularFireAuth, private router: Router, public db: AngularFireDatabase, public dialog: MdDialog) {
     const myDate = new Date();
+    const day = myDate.getDay();
     const date = myDate.getDate();
     const month = myDate.getMonth() + 1;
     const year = myDate.getFullYear();
+
+    this.date = date;
+    this.year = year;
+    switch (month) {
+      case 1: {
+        this.month = 'มกราคม';
+        break;
+      }
+      case 2: {
+        this.month = 'กุมภาพันธ์';
+        break;
+      }
+      case 3: {
+        this.month = 'มีนาคม';
+        break;
+      }
+      case 4: {
+        this.month = 'เมษายน';
+        break;
+      }
+      case 5: {
+        this.month = 'พฤษภาคม';
+        break;
+      }
+      case 6: {
+        this.month = 'มิถุนายน';
+        break;
+      }
+      case 7: {
+        this.month = 'กรกฎาคม';
+        break;
+      }
+      case 8: {
+        this.month = 'สิงหาคม';
+        break;
+      }
+      case 9: {
+        this.month = 'กันยายน';
+        break;
+      }
+      case 10: {
+        this.month = 'ตุลาคม';
+        break;
+      }
+      case 11: {
+        this.month = 'พฤศจิกายน';
+        break;
+      }
+      case 12: {
+        this.month = 'ธันวาคม';
+        break;
+      }
+    }
+    /*end switch*/
+
+    switch (day) {
+      case 0: {
+        this.day = 'จันทร์';
+        break;
+      }
+      case 1: {
+        this.day = 'อังคาร';
+        break;
+      }
+      case 2: {
+        this.day = 'พุธ';
+        break;
+      }
+      case 3: {
+        this.day = 'พฤหัส';
+        break;
+      }
+      case 4: {
+        this.day = 'ศุกร์';
+        break;
+      }
+      case 5: {
+        this.day = 'เสาร์';
+        break;
+      }
+      case 6: {
+        this.day = 'อาทิตย์';
+        break;
+      }
+    }
+    /*end switch*/
+
 
     /*check auth*/
     if (!('uid' in localStorage)) {
@@ -90,9 +180,18 @@ export class HomeComponent implements OnInit {
               // a must be equal to b
               return 0;
             });
+
+            /*set localStorage*/
+            localStorage.setItem('data', JSON.stringify(this.data));
+            localStorage.setItem('sumIncome', JSON.stringify(this.sumIncome));
+            localStorage.setItem('sumPayment', JSON.stringify(this.sumPayment));
           }
         }
       });
+    } else {
+      this.data = JSON.parse(localStorage.getItem('data'));
+      this.sumIncome = parseInt(localStorage.getItem('sumIncome'));
+      this.sumPayment = parseInt(localStorage.getItem('sumPayment'));
     }
   }
 
