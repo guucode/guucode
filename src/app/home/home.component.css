@@ -2,10 +2,66 @@
   background-color: rgb(229, 236, 238);
 }
 
-.light-blue-color {
+.content-container {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.txt-light-blue {
   color: rgb(90, 180, 234);
 }
 
-.light-blue-bg {
+.bg-light-blue {
   background-color: rgb(90, 180, 234);
+}
+
+.border-light-blue {
+  border: 0.5px solid rgb(90, 180, 234);
+}
+
+.bg-white {
+  background: white;
+}
+
+.btn-shadow {
+  -webkit-box-shadow: 5px 5px 10px 0px rgba(180, 186, 187, 0.75);
+  -moz-box-shadow: 5px 5px 10px 0px rgba(180, 186, 187, 0.75);
+  box-shadow: 5px 5px 10px 0px rgba(180, 186, 187, 0.75);
+}
+
+.upper-text {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.bottom-text {
+  margin-top: -5px;
+}
+
+.txt-dark-grey {
+  color: rgb(112, 114, 114);
+}
+
+.txt-light-grey {
+  color: rgb(192, 198, 201);
+}
+
+.border-bottom-light-grey {
+  border-bottom: 0.5px solid rgb(192, 198, 201);
+}
+
+.paddingLeftRight20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.txt-expense {
+  color: red;
+}
+
+.txt-income {
+  color: black;
 }
