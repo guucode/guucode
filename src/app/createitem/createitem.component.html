@@ -29,12 +29,12 @@
         <section class="example-section">
           <label class="example-margin">ประเภท <span style="color: red;">*</span></label>
 
-          <md-select placeholder="" *ngIf="typeItem == 0" class="example-full-width"
+          <md-select placeholder="" *ngIf="typeItem == '0'" class="example-full-width"
                      [(ngModel)]="select_save" name="createItem_select_save">
             <md-option *ngFor="let item_save of select_type_save" [value]="item_save.$key">{{ item_save.$value }}
             </md-option>
           </md-select>
-          <md-select placeholder="" *ngIf="typeItem == 1" class="example-full-width"
+          <md-select placeholder="" *ngIf="typeItem == '1'" class="example-full-width"
                      [(ngModel)]="select_pay" name="createItem_select_pay">
             <md-option *ngFor="let item_pay of select_type_pay" [value]="item_pay.$key">{{ item_pay.$value }}
             </md-option>
