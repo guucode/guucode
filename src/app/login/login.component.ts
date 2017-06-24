@@ -9,13 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public email: string = "";
+  public password: string = "";
+
   constructor(public afAuth: AngularFireAuth,private router: Router) {
   }
   /*end cons*/
 
-  emailLogin(formData) {
-    if(formData.valid) {
-      this.afAuth.auth.signInWithEmailAndPassword(formData.value.email,formData.value.password)
+  emailLogin() {
+    if(this.email && this.password) {
+      this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password)
         .then(
           (success) => {
             this.router.navigate(['/home']);

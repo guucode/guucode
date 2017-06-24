@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   /*end func*/
 
   ngOnInit() {
-    console.log(this.user);
   }
 
 }

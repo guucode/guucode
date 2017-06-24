@@ -1,4 +1,4 @@
-<form #formData='ngForm' (ngSubmit)="emailLogin(formData)">
+<form #formData='ngForm' (ngSubmit)="emailLogin()">
   <div class="login-bg" style="padding: 10px;">
     <div style="margin: 20px 0 0 0;">
       <div style="padding-left: 15px;">
@@ -8,15 +8,15 @@
     </div>
     <div class="paddingLeftRight20">
       <md-input-container class="width100Percent">
-        <input mdInput placeholder="EMAIL" type="email" (ngModel)="email" name="email">
+        <input mdInput placeholder="EMAIL" type="email" [(ngModel)]="email" name="email">
       </md-input-container>
       <md-input-container class="width100Percent">
-        <input mdInput placeholder="PASSWORD" type="password" (ngModel)="password" name="password">
+        <input mdInput placeholder="PASSWORD" type="password" [(ngModel)]="password" name="password">
       </md-input-container>
       <a href="#"><p class="txt14px" style="text-align: right; margin-top: 0;">FORGOT?</p></a>
     </div>
     <div class="paddingTopBottom10 paddingLeftRight20">
-      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;"  type="submit" [disabled]="!formData.valid">LOG IN</button>
+      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;" type="submit">LOG IN</button>
       <p class="txtCenter txt14px txtWhite">OR</p>
       <div (click)="googleLogin()">
         <img src="../../assets/images/gPlus-btn.png" alt="sign in with google plus" style="max-width: 100%;">
