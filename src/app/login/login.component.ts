@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 
 import config from '../Configs';
 firebase.initializeApp(config.firebase);
@@ -15,14 +16,12 @@ export class LoginComponent implements OnInit {
   public email = '';
   public password = '';
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
+  constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     if ('uid' in localStorage) {
       this.router.navigate(['/home']);
       return;
     }
   }
-
-  /*end cons*/
 
   emailLogin() {
     if (this.email && this.password) {
@@ -43,8 +42,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  /*end func*/
-
   facebookLogin() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(
@@ -56,8 +53,6 @@ export class LoginComponent implements OnInit {
           console.log(err);
         });
   }
-
-  /*end func*/
 
   googleLogin() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
@@ -71,7 +66,29 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  /*end func*/
+  createAccount(uid, email, photoURL, displayName) {
+    const itemToPut = {
+      email: email,
+      photoURL: photoURL,
+      displayName: displayName
+    };
+    const acountItem = this.db.object('/accounts/' + uid, {preserveSnapshot: true});
+    // Check account is exist or not?
+    acountItem.subscribe(snapshot => {
+      console.log(snapshot.key);
+      console.log(snapshot.val());
+      if (snapshot.val()) {
+        // Already account
+        acountItem.update(itemToPut);
+      } else {
+        // Create new account
+        const acounts = this.db.object('/accounts', {preserveSnapshot: true});
+        const acountToPut = {};
+        acountToPut[uid] = itemToPut;
+        acounts.update(acountToPut);
+      }
+    });
+  }
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
@@ -80,7 +97,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', user.email);
         localStorage.setItem('uid', user.uid);
         localStorage.setItem('photoURL', user.photoURL);
-        this.router.navigate(['/home']);
+        this.createAccount(user.uid, user.email, user.photoURL, user.displayName);
+        // this.router.navigate(['/home']);
         return;
       }
     });

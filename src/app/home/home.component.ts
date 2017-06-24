@@ -3,6 +3,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 
 import config from '../Configs';
 
@@ -12,17 +13,19 @@ import config from '../Configs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public uid = '';
   public email = '';
   public displayName = '';
   public photoURL = '';
   // public user: Observable<firebase.User>;
   // public userInfo: Observable<firebase.UserInfo>;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
+  constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     if (!('uid' in localStorage)) {
       this.router.navigate(['/login']);
       return;
     }
+    this.uid = localStorage.getItem('uid');
     this.email = localStorage.getItem('email');
     this.displayName = localStorage.getItem('displayName');
     this.photoURL = localStorage.getItem('photoURL');
@@ -48,7 +51,10 @@ export class HomeComponent implements OnInit {
   }
 
   sendTokenToServer(currentToken) {
-    console.log(currentToken);
+    const acountItem = this.db.object('/accounts/' + this.uid, {preserveSnapshot: true});
+    acountItem.update({
+      fcm_token: currentToken
+    });
   }
 
   requestPermission(messaging) {
@@ -60,7 +66,6 @@ export class HomeComponent implements OnInit {
         console.log('Notification permission granted.');
         messaging.getToken()
           .then(function (currentToken) {
-            console.log(currentToken);
             if (currentToken) {
               HomeComponentThis.sendTokenToServer(currentToken);
             }
@@ -87,8 +92,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+
   /* link to create */
-  go2create()  {
+  go2create() {
     this.router.navigate(['/createitem']);
   }
 }
