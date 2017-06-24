@@ -9,23 +9,14 @@ branches:
     - master
 
 before_script:
+  - "echo \"export default {  firebase: {    apiKey: '${FIREBASE_API_KEY}',    authDomain: '${FIREBASE_AUTH_DOMAIN}',    databaseURL: '${FIREBASE_DATABASE_URL}',    projectId: '${FIREBASE_PROJECT_ID}',    storageBucket: '${FIREBASE_STORAGE_BUCKET}',    messagingSenderId: '${FIREBASE_MESSAGING_SENDER_ID}'  }}\" > src/app/Configs/index.ts"
+  - "cat src/app/Configs/index.ts"
   - npm i npm@4 -g
   - npm install -g firebase-tools
   - npm install -g @angular/cli
   - cd functions
   - npm install
   - cd ..
-  - 'echo "export default {" >> src/app/Configs/index.ts'
-  - 'echo "  firebase: {" >> src/app/Configs/index.ts'
-  - 'echo "    \"apiKey\": \"${FIREBASE_API_KEY}\"," >> src/app/Configs/index.ts'
-  - 'echo "    \"authDomain\": \"${FIREBASE_AUTH_DOMAIN}\"," >> src/app/Configs/index.ts'
-  - 'echo "    \"databaseURL\": \"${FIREBASE_DATABASE_URL}\"," >> src/app/Configs/index.ts'
-  - 'echo "    \"projectId\": \"${FIREBASE_PROJECT_ID}\"," >> src/app/Configs/index.ts'
-  - 'echo "    \"storageBucket\": \"${FIREBASE_STORAGE_BUCKET}\"," >> src/app/Configs/index.ts'
-  - 'echo "    \"messagingSenderId\": \"${FIREBASE_MESSAGING_SENDER_ID}\"" >> src/app/Configs/index.ts'
-  - 'echo "    }" >> src/app/Configs/index.ts'
-  - 'echo "  }" >> src/app/Configs/index.ts'
-
 
 script:
   - ng build --prod
