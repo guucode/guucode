@@ -16,7 +16,7 @@
       <a href="#"><p class="txt14px" style="text-align: right; margin-top: 0;">FORGOT?</p></a>
     </div>
     <div class="paddingTopBottom10 paddingLeftRight20">
-      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;">LOG IN</button>
+      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;"  type="submit" [disabled]="!formData.valid">LOG IN</button>
       <p class="txtCenter txt14px txtWhite">OR</p>
       <div (click)="googleLogin()">
         <img src="../../assets/images/gPlus-btn.png" alt="sign in with google plus" style="max-width: 100%;">
