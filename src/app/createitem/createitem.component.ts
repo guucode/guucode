@@ -19,10 +19,10 @@ export class CreateitemComponent implements OnInit {
 
   constructor(db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     this.user = afAuth.authState;
-    const fire_select_type_pay = db.list('/config/payType', {
+    const fire_select_type_pay = db.list('/configs/paymentType', {
       query: {}});
 
-    const fire_select_type_save = db.list('/config/saveType', {query: {}});
+    const fire_select_type_save = db.list('/configs/incomeType', {query: {}});
 
     if (this.user) this.router.navigate(['/createitem']);
 
