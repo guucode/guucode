@@ -15,6 +15,7 @@ firebase.initializeApp(config.firebase);
 export class LoginComponent implements OnInit {
   public email = '';
   public password = '';
+  private userData;
 
   constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     if ('uid' in localStorage) {
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   emailLogin() {
+    const loginC = this;
     if (this.email && this.password) {
       this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
         .then(
@@ -33,7 +35,10 @@ export class LoginComponent implements OnInit {
             // The Facebook firebase.auth.AuthCredential containing the Facebook
             // access token:
             // var credential = success.credential;
-            this.router.navigate(['/home']);
+            setTimeout(() => {
+              loginC.setUserDateToLocalStorage(loginC.userData);
+              loginC.router.navigate(['/home']);
+            }, 100);
           }).catch(
         (err) => {
           console.log(err);
@@ -43,10 +48,14 @@ export class LoginComponent implements OnInit {
   }
 
   facebookLogin() {
+    const loginC = this;
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(
         (success) => {
-          this.router.navigate(['/home']);
+          setTimeout(() => {
+            loginC.setUserDateToLocalStorage(loginC.userData);
+            loginC.router.navigate(['/home']);
+          }, 100);
         })
       .catch(
         (err) => {
@@ -55,15 +64,31 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin() {
+    const loginC = this;
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(
         (success) => {
-          this.router.navigate(['/home']);
+          setTimeout(() => {
+            loginC.setUserDateToLocalStorage(loginC.userData);
+            loginC.router.navigate(['/home']);
+          }, 100);
         })
       .catch(
         (err) => {
           console.log(err);
         });
+  }
+
+  setUserDateToLocalStorage(userData) {
+    if (userData) {
+      localStorage.setItem('displayName', userData.displayName);
+      localStorage.setItem('email', userData.email);
+      localStorage.setItem('uid', userData.uid);
+      localStorage.setItem('photoURL', userData.photoURL);
+      localStorage.setItem('providerId', userData.providerData[0].providerId);
+      this.createAccount(userData.uid, userData.email, userData.photoURL, userData.displayName);
+      return;
+    }
   }
 
   createAccount(uid, email, photoURL, displayName) {
@@ -92,16 +117,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        localStorage.setItem('displayName', user.displayName);
-        localStorage.setItem('email', user.email);
-        localStorage.setItem('uid', user.uid);
-        localStorage.setItem('photoURL', user.photoURL);
-        this.createAccount(user.uid, user.email, user.photoURL, user.displayName);
-        // this.router.navigate(['/home']);
-        return;
-      }
+      this.userData = user;
     });
   }
-
 }
