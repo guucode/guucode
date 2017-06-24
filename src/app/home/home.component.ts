@@ -14,6 +14,7 @@ import config from '../Configs';
 export class HomeComponent implements OnInit {
   public email = '';
   public displayName = '';
+  public photoURL = '';
   // public user: Observable<firebase.User>;
   // public userInfo: Observable<firebase.UserInfo>;
 
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     }
     this.email = localStorage.getItem('email');
     this.displayName = localStorage.getItem('displayName');
+    this.photoURL = localStorage.getItem('photoURL');
 
     const messaging = firebase.messaging();
     this.requestPermission(messaging);
