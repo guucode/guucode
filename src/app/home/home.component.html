@@ -9,16 +9,16 @@
   <div class="content-container paddingLeftRight20" style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
     <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
     <!-- Circles displaying income&expense --->
-    <div style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
-      <div routerLink="/list-item/income" class="bg-white btn-shadow"
-           style="width: 100px; height: 100px; border-radius: 50%">
+    <div routerLink="/list-item" style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
+      <div class="bg-white btn-shadow"
+           style="width: 100px; height: 100px; border-radius: 50%; margin-left: 25px;">
         <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
           <p class="upper-text">รายรับ</p>
           <p class="bottom-text" style="font-size: 30px; font-weight: 400;">20K</p>
         </div>
       </div>
-      <div routerLink="/list-item/expense" class="bg-white btn-shadow"
-           style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px;">
+      <div class="bg-white btn-shadow"
+           style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px; margin-right: 25px;">
         <div class="txt-light-grey" style="overflow: auto; text-align: center;">
           <p class="upper-text" style="font-size: 20px;">รายจ่าย</p>
           <p class="bottom-text" style="font-size: 60px; font-weight: 400;">13K</p>
@@ -44,7 +44,7 @@
   </div>
   <!-- list -->
   <div class="content-container paddingLeftRight20">
-    <div class="bg-white" style="max-height: calc(100vh - 400px); overflow-y: auto;">
+    <div class="bg-white" style="max-height: calc(100vh - 475px); overflow-y: auto;">
       <md-list style="padding: 0;">
         <md-list-item class="border-bottom-light-grey">
           <p class="txt-income" style="width: 100%;">

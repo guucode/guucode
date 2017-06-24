@@ -40,7 +40,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'list-item/:type', component: ListItemComponent},
+  {path: 'list-item', component: ListItemComponent},
   {path: 'fb', component: FirebaseLoginComponent},
   {path: 'createitem', component: CreateitemComponent},
   {path: '**', component: LoginComponent}
