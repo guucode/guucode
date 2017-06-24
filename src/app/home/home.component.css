@@ -12,3 +12,9 @@
 .bottom-text {
   margin-top: -5px;
 }
+
+/* Sidenav */
+md-sidenav {
+  width: 200px;
+}
+

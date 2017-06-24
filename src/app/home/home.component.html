@@ -1,100 +1,117 @@
 <div class="main-bg" style="height: calc(100vh);">
-  <md-toolbar style="background-color: white;">
-    <div>
-      <img src="{{photoURL}}" alt="User icon" style="width: 35px; vertical-align: middle; border-radius: 50%;">
+  <md-sidenav-container style="height: 100vh;">
+    <md-sidenav class="main-bg" mode="over" #sidenav>
+      <div class="bg-light-blue" style="padding: 20px 0;">
+        <img src="{{photoURL}}" alt="User icon"
+             style="width: 50px; border-radius: 50%; display: block; margin: 0 auto;">
+      </div>
+      <div>
+        <p class="border-bottom-light-grey paddingLeftRight20">สถิติรายเดือน</p>
+      </div>
+      <div>
+        <p class="border-bottom-light-grey paddingLeftRight20">Reset password</p>
+        <p class="border-bottom-light-grey paddingLeftRight20">Logout</p>
+      </div>
+    </md-sidenav>
+    <md-toolbar style="background-color: white;">
+      <div (click)="sidenav.open()">
+        <i class="material-icons txt-light-blue" style="font-size: 30px; vertical-align: middle;">view_headline</i>
+      </div>
+      <h4 style="width: 100%; text-align: center; font-family: 'Prompt', sans-serif; margin-right: 30px;">
+        สรุปยอดเงิน</h4>
+      <!-- i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i -->
+      <!--<i class="material-icons txt-light-blue" style="font-size: 30px;">format_list_bulleted</i>-->
+    </md-toolbar>
+    <div class="content-container paddingLeftRight20"
+         style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
+      <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
+      <!-- Circles displaying income&expense --->
+      <div routerLink="/list-item" style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
+        <div class="bg-white btn-shadow"
+             style="width: 100px; height: 100px; border-radius: 50%; margin-left: 25px;">
+          <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
+            <p class="upper-text">รายรับ</p>
+            <p class="bottom-text" style="font-size: 30px; font-weight: 400;">20K</p>
+          </div>
+        </div>
+        <div class="bg-white btn-shadow"
+             style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px; margin-right: 25px;">
+          <div class="txt-light-grey" style="overflow: auto; text-align: center;">
+            <p class="upper-text" style="font-size: 20px;">รายจ่าย</p>
+            <p class="bottom-text" style="font-size: 60px; font-weight: 400;">13K</p>
+          </div>
+        </div>
+        <!--<div>-->
+        <!--<a md-mini-fab routerLink="/list-item/all" style="position: absolute; right: 0; bottom: 0; background-color: white;">-->
+        <!--<i class="material-icons" style="color: rgb(112, 114, 114);">assignment</i>-->
+        <!--</a>-->
+        <!--</div>-->
+      </div>
     </div>
-    <h4 style="width: 100%; text-align: center; font-family: 'Prompt', sans-serif;">สรุปยอดเงิน</h4>
-    <!-- i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i -->
-    <i class="material-icons txt-light-blue" style="font-size: 30px;">format_list_bulleted</i>
-  </md-toolbar>
-  <div class="content-container paddingLeftRight20" style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
-    <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
-    <!-- Circles displaying income&expense --->
-    <div routerLink="/list-item" style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
-      <div class="bg-white btn-shadow"
-           style="width: 100px; height: 100px; border-radius: 50%; margin-left: 25px;">
-        <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
-          <p class="upper-text">รายรับ</p>
-          <p class="bottom-text" style="font-size: 30px; font-weight: 400;">20K</p>
+    <!-- show total money left -->
+    <div class="content-container paddingLeftRight20" style="margin-bottom: 20px;">
+      <div class="border-light-blue"
+           style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px; background: linear-gradient(to left, #FFFFFF 50%, rgb(90, 180, 234) 50%);">
+        <div style="display: inline-block; width: 45%;">
+          <p class="txt-white" style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
+        </div>
+        <div style="display: inline-block; width: 45%;">
+          <p class="txt-light-blue" style="margin: 0; margin-left: 10px; text-align: center;">7,000 บาท</p>
         </div>
       </div>
-      <div class="bg-white btn-shadow"
-           style="width: 150px; height: 150px; border-radius: 50%; float: right; margin-top: -55px; margin-right: 25px;">
-        <div class="txt-light-grey" style="overflow: auto; text-align: center;">
-          <p class="upper-text" style="font-size: 20px;">รายจ่าย</p>
-          <p class="bottom-text" style="font-size: 60px; font-weight: 400;">13K</p>
-        </div>
-      </div>
-      <!--<div>-->
-      <!--<a md-mini-fab routerLink="/list-item/all" style="position: absolute; right: 0; bottom: 0; background-color: white;">-->
-      <!--<i class="material-icons" style="color: rgb(112, 114, 114);">assignment</i>-->
-      <!--</a>-->
-      <!--</div>-->
     </div>
-  </div>
-  <!-- show total money left -->
-  <div class="content-container paddingLeftRight20" style="margin-bottom: 20px;">
-    <div class="border-light-blue"
-         style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px; background: linear-gradient(to left, #FFFFFF 50%, rgb(90, 180, 234) 50%);">
-      <div style="display: inline-block; width: 45%;">
-        <p class="txt-white" style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
-      </div>
-      <div style="display: inline-block; width: 45%;">
-        <p class="txt-light-blue" style="margin: 0; margin-left: 10px; text-align: center;">7,000 บาท</p>
+    <!-- list -->
+    <div class="content-container paddingLeftRight20">
+      <div class="bg-white" style="max-height: calc(100vh - 475px); overflow-y: auto;">
+        <md-list style="padding: 0;">
+          <md-list-item class="border-bottom-light-grey">
+            <p class="txt-income" style="width: 100%;">
+              <span>เงินเดือน</span>
+              <span style="float: right;">+ 20,000</span>
+            </p>
+          </md-list-item>
+          <md-list-item class="border-bottom-light-grey">
+            <p class="txt-expense" style="width: 100%;">
+              <span>ค่างวดรถ</span>
+              <span style="float: right;">- 8,000</span>
+            </p>
+          </md-list-item>
+          <md-list-item class="border-bottom-light-grey">
+            <p class="txt-expense" style="width: 100%;">
+              <span>ค่าเช่าบ้าน</span>
+              <span style="float: right;">- 4,000</span>
+            </p>
+          </md-list-item>
+          <md-list-item class="border-bottom-light-grey">
+            <p class="txt-expense" style="width: 100%;">
+              <span>ค่าดูหนัง</span>
+              <span style="float: right;">- 200</span>
+            </p>
+          </md-list-item>
+          <md-list-item class="border-bottom-light-grey">
+            <p class="txt-expense" style="width: 100%;">
+              <span>MK</span>
+              <span style="float: right;">- 900</span>
+            </p>
+          </md-list-item>
+          <md-list-item class="border-bottom-light-grey">
+            <p class="txt-income" style="width: 100%;">
+              <span>งานฟรีแลนซ์</span>
+              <span style="float: right;">+ 3,000</span>
+            </p>
+          </md-list-item>
+        </md-list>
       </div>
     </div>
-  </div>
-  <!-- list -->
-  <div class="content-container paddingLeftRight20">
-    <div class="bg-white" style="max-height: calc(100vh - 475px); overflow-y: auto;">
-      <md-list style="padding: 0;">
-        <md-list-item class="border-bottom-light-grey">
-          <p class="txt-income" style="width: 100%;">
-            <span>เงินเดือน</span>
-            <span style="float: right;">+ 20,000</span>
-          </p>
-        </md-list-item>
-        <md-list-item class="border-bottom-light-grey">
-          <p class="txt-expense" style="width: 100%;">
-            <span>ค่างวดรถ</span>
-            <span style="float: right;">- 8,000</span>
-          </p>
-        </md-list-item>
-        <md-list-item class="border-bottom-light-grey">
-          <p class="txt-expense" style="width: 100%;">
-            <span>ค่าเช่าบ้าน</span>
-            <span style="float: right;">- 4,000</span>
-          </p>
-        </md-list-item>
-        <md-list-item class="border-bottom-light-grey">
-          <p class="txt-expense" style="width: 100%;">
-            <span>ค่าดูหนัง</span>
-            <span style="float: right;">- 200</span>
-          </p>
-        </md-list-item>
-        <md-list-item class="border-bottom-light-grey">
-          <p class="txt-expense" style="width: 100%;">
-            <span>MK</span>
-            <span style="float: right;">- 900</span>
-          </p>
-        </md-list-item>
-        <md-list-item class="border-bottom-light-grey">
-          <p class="txt-income" style="width: 100%;">
-            <span>งานฟรีแลนซ์</span>
-            <span style="float: right;">+ 3,000</span>
-          </p>
-        </md-list-item>
-      </md-list>
-    </div>
-  </div>
 
-  <button md-fab (click)="go2create()"
-          style="position: fixed; bottom: 20px; right: 20px; background-color: rgb(90, 180, 234);">
-    <md-icon>add</md-icon>
-  </button>
-  <!--<div class="container" style="padding: 10px;">-->
-  <!--<button md-raised-button (click)="logout()" color="warn">Logout</button>-->
-  <!--</div>-->
+    <button md-fab (click)="go2create()"
+            style="position: fixed; bottom: 20px; right: 20px; background-color: rgb(90, 180, 234);">
+      <md-icon>add</md-icon>
+    </button>
+    <!--<div class="container" style="padding: 10px;">-->
+    <!--<button md-raised-button (click)="logout()" color="warn">Logout</button>-->
+    <!--</div>-->
+  </md-sidenav-container>
 </div>
 
 

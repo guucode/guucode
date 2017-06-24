@@ -27,7 +27,7 @@ import {
   MdRadioModule,
   MdToolbarModule,
   MdSliderModule,
-  MdSlideToggleModule
+  MdSlideToggleModule, MdSidenavModule
 } from '@angular/material';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {ListItemComponent} from './list-item/list-item.component';
@@ -59,7 +59,8 @@ const appRoutes: Routes = [
     ListItemComponent,
     ListItemDayComponent,
     CreateitemComponent,
-    LogoutComponent
+    LogoutComponent,
+    CreateitemComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     MdRadioModule,
     MdSliderModule,
     MdProgressSpinnerModule,
-    MdSlideToggleModule
+    MdSlideToggleModule,
+    MdSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
