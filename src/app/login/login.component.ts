@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
         .then(
           (success) => {
             // The firebase.User instance:
-            //var user = success.user;
+            // var user = success.user;
             // The Facebook firebase.auth.AuthCredential containing the Facebook
             // access token:
-            //var credential = success.credential;
+            // var credential = success.credential;
             this.router.navigate(['/home']);
           }).catch(
         (err) => {
