@@ -4,7 +4,8 @@
       <img src="{{photoURL}}" alt="User icon" style="width: 35px; vertical-align: middle; border-radius: 50%;">
     </div>
     <h4 style="width: 100%; text-align: center; font-family: 'Prompt', sans-serif;">สรุปยอดเงิน</h4>
-    <i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i>
+    <!-- i class="material-icons txt-light-blue" style="font-size: 30px;">widgets</i -->
+    <i class="material-icons txt-light-blue" style="font-size: 30px;">format_list_bulleted</i>
   </md-toolbar>
   <div class="content-container paddingLeftRight20" style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
     <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
@@ -33,9 +34,10 @@
   </div>
   <!-- show total money left -->
   <div class="content-container paddingLeftRight20" style="margin-bottom: 20px;">
-    <div class="border-light-blue" style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px;">
+    <div class="border-light-blue"
+         style="height: 25px;border-radius: 30px;padding: 2px 0; margin-bottom: 10px; background: linear-gradient(to left, #FFFFFF 50%, rgb(90, 180, 234) 50%);">
       <div style="display: inline-block; width: 45%;">
-        <p style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
+        <p class="txt-white" style="margin: 0; margin-left: 15px;">ยอดคงเหลือ</p>
       </div>
       <div style="display: inline-block; width: 45%;">
         <p class="txt-light-blue" style="margin: 0; margin-left: 10px; text-align: center;">7,000 บาท</p>
@@ -86,7 +88,8 @@
     </div>
   </div>
 
-  <button md-fab class="bg-light-blue" (click)="go2create()" style="position: fixed; bottom: 20px; right: 20px;">
+  <button md-fab (click)="go2create()"
+          style="position: fixed; bottom: 20px; right: 20px; background-color: rgb(90, 180, 234);">
     <md-icon>add</md-icon>
   </button>
   <!--<div class="container" style="padding: 10px;">-->
