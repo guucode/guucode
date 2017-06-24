@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -6,11 +7,16 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+  public inputEmail: string;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
   }
 
+  onSubmitEmail() {
+    console.log(this.inputEmail);
+    this.router.navigate(['/reset-password-complete']);
+  }
 }

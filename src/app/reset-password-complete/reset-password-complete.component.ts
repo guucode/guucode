@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./reset-password-complete.component.css']
 })
 export class ResetPasswordCompleteComponent implements OnInit {
-
+  is_send_mail_success = true;
   constructor() {
   }
 

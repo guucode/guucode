@@ -49,6 +49,8 @@ const appRoutes: Routes = [
   {path: 'fb', component: FirebaseLoginComponent},
   {path: 'createitem', component: CreateitemComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'reset-password-complete', component: ResetPasswordCompleteComponent},
   {path: '**', component: LoginComponent}
 ];
 
