@@ -27,13 +27,15 @@ import {
   MdRadioModule,
   MdToolbarModule,
   MdSliderModule,
-  MdSlideToggleModule, MdSidenavModule
+  MdSlideToggleModule, MdSidenavModule, MdDialogModule
 } from '@angular/material';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {ListItemComponent} from './list-item/list-item.component';
 import {ListItemDayComponent} from './list-item-day/list-item-day.component';
 import {CreateitemComponent} from './createitem/createitem.component';
 import {LogoutComponent} from './logout/logout.component';
+import {ResetPasswordDialogComponent} from './reset-password-dialog/reset-password-dialog.component';
+import {SignoutDialogComponent} from './signout-dialog/signout-dialog.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -60,7 +62,9 @@ const appRoutes: Routes = [
     ListItemDayComponent,
     CreateitemComponent,
     LogoutComponent,
-    CreateitemComponent
+    CreateitemComponent,
+    ResetPasswordDialogComponent,
+    SignoutDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -85,10 +89,15 @@ const appRoutes: Routes = [
     MdSliderModule,
     MdProgressSpinnerModule,
     MdSlideToggleModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ResetPasswordDialogComponent,
+    SignoutDialogComponent
+  ]
 })
 export class AppModule {
 }

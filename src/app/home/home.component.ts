@@ -5,7 +5,11 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 
+import {MdDialog, MdDialogRef} from '@angular/material';
+
 import config from '../Configs';
+import {ResetPasswordDialogComponent} from '../reset-password-dialog/reset-password-dialog.component';
+import {SignoutDialogComponent} from '../signout-dialog/signout-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +24,9 @@ export class HomeComponent implements OnInit {
   // public user: Observable<firebase.User>;
   // public userInfo: Observable<firebase.UserInfo>;
 
-  constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
+  selectedOption: string;
+
+  constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router, public dialog: MdDialog) {
     if (!('uid' in localStorage)) {
       this.router.navigate(['/login']);
       return;
@@ -34,6 +40,28 @@ export class HomeComponent implements OnInit {
     this.requestPermission(messaging);
     this.onTokenRefresh(messaging);
 
+  }
+
+  openResetPasswordDialog() {
+    const dialogRef = this.dialog.open(ResetPasswordDialogComponent, {
+      height: '175px',
+      width: '300px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+      console.log(result);
+    });
+  }
+
+  openSignOutDialog() {
+    const dialogRef = this.dialog.open(SignoutDialogComponent, {
+      height: '175px',
+      width: '300px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+      console.log(result);
+    });
   }
 
   onTokenRefresh(messaging) {

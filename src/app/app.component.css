@@ -92,3 +92,7 @@
 .inline-block {
   display: inline-block;
 }
+
+md-dialog-container {
+  margin: 0 auto;
+}

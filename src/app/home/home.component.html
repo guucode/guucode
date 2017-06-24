@@ -6,11 +6,15 @@
              style="width: 50px; border-radius: 50%; display: block; margin: 0 auto;">
       </div>
       <div>
-        <p class="border-bottom-light-grey paddingLeftRight20">สถิติรายเดือน</p>
+        <p class="paddingLeftRight20"><i class="material-icons" style="vertical-align: sub;">equalizer</i> สถิติ</p>
       </div>
       <div>
-        <p class="border-bottom-light-grey paddingLeftRight20">Reset password</p>
-        <p class="border-bottom-light-grey paddingLeftRight20">Logout</p>
+        <p (click)="openResetPasswordDialog(); sidenav.close();" class="paddingLeftRight20"><i class="material-icons"
+                                                                                               style="vertical-align: sub;">settings_backup_restore</i>
+          Reset password</p>
+        <p (click)="openSignOutDialog(); sidenav.close();" class="paddingLeftRight20"><i class="material-icons"
+                                                                                         style="vertical-align: sub;">exit_to_app</i>
+          Sign out</p>
       </div>
     </md-sidenav>
     <md-toolbar style="background-color: white;">
