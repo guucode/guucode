@@ -12,7 +12,6 @@
 
 .width100Percent {
   width: 100%;
-  max-width: 500px;
 }
 
 .paddingAll20 {
@@ -43,4 +42,10 @@
 
 .txtWhite {
   color: white;
+}
+
+.content-container {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
 }

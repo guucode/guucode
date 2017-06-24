@@ -12,7 +12,6 @@
 
 .width100Percent {
   width: 100%;
-  max-width: 500px;
 }
 
 .paddingLeftRight20 {
@@ -23,4 +22,10 @@
 .paddingTopBottom10 {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.content-container {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
 }
