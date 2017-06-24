@@ -5,49 +5,52 @@
       <i class="material-icons" id="icon_close_create_item">highlight_off</i>
     </button>
   </md-toolbar>
-  <form class="example-form">
+  <form #formData='ngForm' (ngSubmit)="onSubmit()">
     <md-card>
       <md-card-content>
         <section class="example-section-center">
-          <md-radio-group [(ngModel)]="typeItem" [ngModelOptions]="{standalone: true}">
-            <md-radio-button value="0"checked="true">&nbsp;&nbsp;รายรับ</md-radio-button>
+          <md-radio-group [(ngModel)]="typeItem" name="createItem_typeItem">
+            <md-radio-button [value]="0" >
+              &nbsp;&nbsp;รายรับ
+            </md-radio-button>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <md-radio-button value="1">&nbsp;&nbsp;รายจ่าย</md-radio-button>
+            <md-radio-button [value]="1" >
+              &nbsp;&nbsp;รายจ่าย
+            </md-radio-button>
           </md-radio-group>
         </section>
         <section class="example-section">
-          <label class="example-margin">จำนวน </label>
+          <label class="example-margin">จำนวน <span style="color: red;">*</span></label>
           <md-input-container class="example-full-width">
-            <input mdInput placeholder="" value="" >
+            <input mdInput placeholder="" value="" type="number"
+                   required [(ngModel)]="money" name="createItem_money">
           </md-input-container>
         </section>
         <section class="example-section">
-          <label class="example-margin">ประเภท </label>
-          <md-select placeholder="" *ngIf="typeItem == 0">
-            <md-option *ngFor="let item_pay of select_type_pay" [value]="item_pay.$key">{{ item_pay.$value }}</md-option>
+          <label class="example-margin">ประเภท <span style="color: red;">*</span></label>
+
+          <md-select placeholder="" *ngIf="typeItem == 0" class="example-full-width"
+                     [(ngModel)]="select_save" name="createItem_select_save">
+            <md-option *ngFor="let item_save of select_type_save" [value]="item_save.$key">{{ item_save.$value }}
+            </md-option>
           </md-select>
-          <md-select placeholder="" *ngIf="typeItem == 1">
-            <md-option *ngFor="let item_save of select_type_save" [value]="item_save.$key">{{ item_save.$value }}</md-option>
+          <md-select placeholder="" *ngIf="typeItem == 1" class="example-full-width"
+                     [(ngModel)]="select_pay" name="createItem_select_pay">
+            <md-option *ngFor="let item_pay of select_type_pay" [value]="item_pay.$key">{{ item_pay.$value }}
+            </md-option>
           </md-select>
-        </section>
-        <section class="example-section">
-          <label class="example-margin">ทำซ้ำ </label>
-          <md-slide-toggle></md-slide-toggle>
-          <md-input-container class="example-full-width">
-            <input mdInput placeholder="" value="" >
-          </md-input-container>
         </section>
 
         <section class="example-section">
           <label class="example-margin">รายละเอียด </label>
           <md-input-container class="example-full-width">
-            <textarea mdInput  placeholder=""></textarea>
+            <textarea mdInput placeholder="" [(ngModel)]="text_detail" name="createItem_text_detail"></textarea>
           </md-input-container>
         </section>
       </md-card-content>
     </md-card>
     <div class="container">
-      <button md-raised-button (click)="logout()" type="submit" id="button_submit_create_item">เสร็จ</button>
+      <button md-raised-button type="submit" id="button_submit_create_item">เสร็จ</button>
     </div>
   </form>
 </div>
