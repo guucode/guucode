@@ -28,8 +28,6 @@ import {
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListItemDayComponent } from './list-item-day/list-item-day.component';
-import {ListItemEditComponent} from './list-item-edit/list-item-edit.component';
-import {ListItemAddComponent} from './list-item-add/list-item-add.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -51,9 +49,7 @@ const appRoutes: Routes = [
     FirebaseLoginComponent,
     SignUpComponent,
     ListItemComponent,
-    ListItemDayComponent,
-    ListItemEditComponent,
-    ListItemAddComponent
+    ListItemDayComponent
   ],
   imports: [
     BrowserModule,
