@@ -27,6 +27,7 @@ import {
 } from '@angular/material';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListItemComponent } from './list-item/list-item.component';
+import { ListItemDayComponent } from './list-item-day/list-item-day.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     MainComponent,
     FirebaseLoginComponent,
     SignUpComponent,
-    ListItemComponent
+    ListItemComponent,
+    ListItemDayComponent
   ],
   imports: [
     BrowserModule,
