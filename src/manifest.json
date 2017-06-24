@@ -2,87 +2,87 @@
   "name": "GuuSave รายรับรายจ่าย by guucode",
   "icons": [
     {
-      "src": "assets/images/icons/3a257809-8ca8-aa22-b4ae-c800c791dc99.webPlatform.png",
+      "src": "/assets/images/pwa/f27386b5-6aed-96de-76e7-deeb7f124f03.webPlatform.png",
       "sizes": "48x48",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/b524776b-9c97-46b7-8df6-15acfe672697.webPlatform.png",
+      "src": "/assets/images/pwa/e8d65ae3-5c89-02d2-3437-b079518f1130.webPlatform.png",
       "sizes": "1240x600",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/2f99f106-d2b5-fea9-d29f-2d5398ea27c6.webPlatform.png",
+      "src": "/assets/images/pwa/cfa4487e-d5ee-17ca-4b24-222360f34621.webPlatform.png",
       "sizes": "300x300",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/f91da21b-d081-46a5-4db6-dacaa6efc2d1.webPlatform.png",
+      "src": "/assets/images/pwa/edecb8a3-5ae0-fc10-c59c-fab28e5afa77.webPlatform.png",
       "sizes": "88x88",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/1868e3be-7961-f19e-da6f-46ed8af16796.webPlatform.png",
+      "src": "/assets/images/pwa/40f241f8-6a80-428e-8818-2d2f7a93d623.webPlatform.png",
       "sizes": "24x24",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/5395d0c8-8c5b-c2d9-c7f1-640d9396153c.webPlatform.png",
+      "src": "/assets/images/pwa/0d0b67e8-8777-bb8b-d845-95dcbe8c2f6a.webPlatform.png",
       "sizes": "50x50",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/d390507d-34e0-9737-56c3-e25fefff78ba.webPlatform.png",
+      "src": "/assets/images/pwa/0fe0ab19-0f91-e241-d05d-505a7f7b819b.webPlatform.png",
       "sizes": "620x300",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/6f2e7d0f-4a76-84dc-784e-ca0c83cc9be1.webPlatform.png",
+      "src": "/assets/images/pwa/c40909da-51c6-3dae-211c-bc28a9020e2f.webPlatform.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/aefb20f3-7e8d-9edc-adf8-77c4a70cf74d.webPlatform.png",
+      "src": "/assets/images/pwa/1a393f4a-3d35-099c-5000-469c05025bcf.webPlatform.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/1c38c1b5-ed93-a7aa-6478-eb2dfcd0b227.webPlatform.png",
+      "src": "/assets/images/pwa/c33e39ba-6af8-d049-bdd0-b411c08c1517.webPlatform.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/fb9958a3-3c29-2876-5194-6af0508eb4e6.webPlatform.png",
+      "src": "/assets/images/pwa/0707f542-295a-6565-2df0-1f5005621e43.webPlatform.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/90ce9aac-0e6f-1541-3f2b-6055f6ab1a1a.webPlatform.png",
+      "src": "/assets/images/pwa/acfdd09d-194a-461d-f8e9-25bc59701bc5.webPlatform.png",
       "sizes": "36x36",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/ios/ios-appicon-1024-1024.png",
+      "src": "/assets/images/pwa/ios/ios-appicon-1024-1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/a0cc2f11-0c3d-5cc3-3eb2-1a9ff158c278.webPlatform.png",
+      "src": "/assets/images/pwa/a5e5a2a0-67e2-fe85-6d1f-1f6a813b1f28.webPlatform.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/7e65e867-3093-9344-d1c4-64b1239be79b.webPlatform.png",
+      "src": "/assets/images/pwa/a7dc8034-ab31-c557-c467-c767e910c49b.webPlatform.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/6855d47b-528d-c7e6-7b75-523c2e85a69a.webPlatform.png",
+      "src": "/assets/images/pwa/09df9add-c72a-e6fc-7b2f-e8c836c68f65.webPlatform.png",
       "sizes": "120x120",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icons/7c99f8fc-1595-49b0-7852-62db5c9952f1.webPlatform.png",
+      "src": "/assets/images/pwa/ef5dbd79-92ba-acff-0d73-a263ac2df11b.webPlatform.png",
       "sizes": "76x76",
       "type": "image/png"
     }
