@@ -9,22 +9,21 @@
     </div>
     <div class="content-container paddingLeftRight20">
       <md-input-container class="width100Percent">
-        <input mdInput placeholder="EMAIL" type="email" [(ngModel)]="email" name="email" required="required">
+        <input mdInput placeholder="EMAIL" type="email" [(ngModel)]="email" name="email">
       </md-input-container>
       <md-input-container class="width100Percent">
-        <input mdInput placeholder="PASSWORD" type="password" [(ngModel)]="password" name="password"
-               required="required">
+        <input mdInput placeholder="PASSWORD" type="password" [(ngModel)]="password" name="password">
       </md-input-container>
       <a href="#"><p class="txt14px" style="text-align: right; margin-top: 0;">FORGOT?</p></a>
     </div>
     <div class="content-container paddingTopBottom10 paddingLeftRight20">
       <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2;" type="submit">LOG IN</button>
       <p class="txtCenter txt14px txtWhite">OR</p>
-      <button class="width100Percent loginBtn loginBtn--facebook" (click)="facebookLogin()">
+      <button class="width100Percent loginBtn loginBtn--facebook" (click)="fbLogin()" type="button">
         <img src="../../assets/images/fb-icon.png" alt="google plus icon" style="width: 25px; vertical-align: middle;">
         Login with Facebook
       </button>
-      <button class="width100Percent loginBtn loginBtn--google" (click)="googleLogin()">
+      <button class="width100Percent loginBtn loginBtn--google" (click)="googleLogin()" type="button">
         <img src="../../assets/images/gPlus-icon.png" alt="google plus icon"
              style="width: 25px; vertical-align: middle;">
         Login with Google

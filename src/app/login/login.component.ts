@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import {Router} from '@angular/router';
+
+import config from '../Configs';
+firebase.initializeApp(config.firebase);
 
 @Component({
   selector: 'app-login',
@@ -9,8 +12,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public email: string = "";
-  public password: string = "";
+  public email = '';
+  public password = '';
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
   }
@@ -23,10 +26,10 @@ export class LoginComponent implements OnInit {
         .then(
           (success) => {
             // The firebase.User instance:
-            var user = success.user;
+            //var user = success.user;
             // The Facebook firebase.auth.AuthCredential containing the Facebook
             // access token:
-            var credential = success.credential;
+            //var credential = success.credential;
             this.router.navigate(['/home']);
           }).catch(
         (err) => {
@@ -68,11 +71,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
-      if (user) this.router.navigate(['/home']);
+      if (user) {
+        this.router.navigate(['/home']);
+      }
     });
   }
 
-  /*end func*/
-
 }
-/*end class*/
