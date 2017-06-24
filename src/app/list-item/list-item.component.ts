@@ -20,6 +20,8 @@ export class ListItemComponent implements OnInit {
       this.type_text = 'รายรับ';
     } else if (this.type === 'expense') {
       this.type_text = 'รายจ่าย';
+    } else if (this.type === 'all') {
+      this.type_text = 'รายการ';
     }
   }
 
