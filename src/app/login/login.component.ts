@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   public password = '';
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
+    if ('uid' in localStorage) {
+      this.router.navigate(['/home']);
+      return;
+    }
   }
 
   /*end cons*/
@@ -72,7 +76,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        localStorage.setItem('displayName', user.displayName);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('uid', user.uid);
+        localStorage.setItem('photoURL', user.photoURL);
         this.router.navigate(['/home']);
+        return;
       }
     });
   }
