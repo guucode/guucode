@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import {Component, OnInit} from '@angular/core';
+import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,13 @@ import { Observable } from 'rxjs/Observable';
 export class HomeComponent implements OnInit {
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth,private router: Router) {
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
     this.user = afAuth.authState;
-    if (this.user) this.router.navigate(['/home']);
+    if (this.user) {
+      this.router.navigate(['/home']);
+    }
   }
+
   /*end cons*/
 
   logout() {
@@ -23,6 +26,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
 
   }
+
   /*end func*/
 
   ngOnInit() {
