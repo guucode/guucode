@@ -72,8 +72,11 @@
 }
 
 /****** text align ******/
-.txtCenter {
+.txt-center {
   text-align: center;
+}
+.txt-middle {
+  vertical-align: middle;
 }
 
 /****** font-size ******/
@@ -83,4 +86,9 @@
 
 .txt14px {
   font-size: 14px;
+}
+
+/****** display ******/
+.inline-block {
+  display: inline-block;
 }
