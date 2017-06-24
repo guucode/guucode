@@ -10,46 +10,6 @@
   height: calc(100vh - 20px);
 }
 
-.width100Percent {
-  width: 100%;
-}
-
-.paddingAll20 {
-  padding: 20px;
-}
-
-.paddingTopBottom10 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.paddingLeftRight20 {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.txtCenter {
-  text-align: center;
-}
-
-.txt10px {
-  font-size: 10px;
-}
-
-.txt14px {
-  font-size: 14px;
-}
-
-.txtWhite {
-  color: white;
-}
-
-.content-container {
-  display: block;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
 /* Shared */
 .loginBtn {
   box-sizing: border-box;
