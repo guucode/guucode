@@ -1,10 +1,10 @@
 <form #formData='ngForm' (ngSubmit)="emailLogin()">
   <div class="login-bg" style="padding: 10px;">
-    <div style="margin: 20px 0 0 0;">
+    <div class="content-container" style="margin-top: 15px;">
       <div style="padding-left: 15px;">
-        <img src="../../assets/images/logo-png.png" alt="logo" style="max-width: 150px; max-height: 150px; display: block; margin: 0 auto;">
+        <img src="../../assets/images/logo-png.png" alt="logo" style="max-width: 30%; max-height: 150px; display: block; margin: 0 auto;">
       </div>
-      <p class="txtCenter txtWhite" style="font-size: 30px; margin: 5px 0; font-weight: 200;">GUUSAVE</p>
+      <p class="txtCenter txtWhite" style="font-size: 25px; margin: 5px 0; font-weight: 200;">GUUSAVE</p>
     </div>
     <div class="paddingLeftRight20">
       <md-input-container class="width100Percent">
@@ -16,13 +16,21 @@
       <a href="#"><p class="txt14px" style="text-align: right; margin-top: 0;">FORGOT?</p></a>
     </div>
     <div class="paddingTopBottom10 paddingLeftRight20">
-      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2; padding: 5px;" type="submit">LOG IN</button>
+      <button md-raised-button class="txt14px width100Percent" style="color: #29ABE2;" type="submit">LOG IN</button>
       <p class="txtCenter txt14px txtWhite">OR</p>
-      <div (click)="googleLogin()">
-        <img src="../../assets/images/gPlus-btn.png" alt="sign in with google plus" style="max-width: 100%;">
-      </div>
+      <button class="width100Percent loginBtn loginBtn--facebook">
+        <img src="../../assets/images/fb-icon.png" alt="google plus icon" style="width: 25px; vertical-align: middle;">
+        Login with Facebook
+      </button>
+      <button class="width100Percent loginBtn loginBtn--google" (click)="googleLogin()">
+        <img src="../../assets/images/gPlus-icon.png" alt="google plus icon" style="width: 25px; vertical-align: middle;">
+        Login with Google
+      </button>
+      <!--<div (click)="googleLogin()">-->
+        <!--<img src="../../assets/images/gPlus-btn.png" alt="sign in with google plus" style="max-width: 100%;">-->
+      <!--</div>-->
     </div>
-    <div routerLink="/signup" class="width100Percent" style="position: absolute; bottom: 0; left: 0; height: 60px; background-color: rgba(255, 255, 255, 0.24);">
+    <div routerLink="/sign-up" class="width100Percent" style="position: absolute; bottom: 0; left: 0; height: 60px; background-color: rgba(255, 255, 255, 0.24);">
       <p class="txtCenter txtWhite">Don't have an account? <b>SIGN UP!</b></p>
     </div>
   </div>
