@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   requestPermission(messaging) {
-    let HomeComponentThis = this;
+    const HomeComponentThis = this;
     console.log('Requesting permission...');
     // [START request_permission]
     messaging.requestPermission()

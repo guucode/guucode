@@ -29,10 +29,11 @@ import {
   MdSliderModule,
   MdSlideToggleModule
 } from '@angular/material';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { ListItemComponent } from './list-item/list-item.component';
-import { ListItemDayComponent } from './list-item-day/list-item-day.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
+import {ListItemComponent} from './list-item/list-item.component';
+import {ListItemDayComponent} from './list-item-day/list-item-day.component';
 import {CreateitemComponent} from './createitem/createitem.component';
+import {LogoutComponent} from './logout/logout.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
   {path: 'list-item', component: ListItemComponent},
   {path: 'fb', component: FirebaseLoginComponent},
   {path: 'createitem', component: CreateitemComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: '**', component: LoginComponent}
 ];
 
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     SignUpComponent,
     ListItemComponent,
     ListItemDayComponent,
-    CreateitemComponent
+    CreateitemComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
