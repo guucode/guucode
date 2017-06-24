@@ -9,7 +9,7 @@
   <div class="content-container paddingLeftRight20" style="padding: 0 30px 10px; margin-bottom: 10px; overflow: hidden;">
     <p style="text-align: right;">วันศุกร์ ที่ 23 มิถุนายน 2560</p>
     <!-- Circles displaying income&expense --->
-    <div style="max-width: 260px; margin: 0 auto 20px;">
+    <div style="max-width: 260px; min-height: 200px; position: relative; margin: 0 auto">
       <div routerLink="/list-item/income" class="bg-white btn-shadow"
            style="width: 100px; height: 100px; border-radius: 50%">
         <div class="txt-dark-grey" style="overflow: auto; text-align: center;">
@@ -24,6 +24,11 @@
           <p class="bottom-text" style="font-size: 60px; font-weight: 400;">13K</p>
         </div>
       </div>
+      <!--<div>-->
+      <!--<a md-mini-fab routerLink="/list-item/all" style="position: absolute; right: 0; bottom: 0; background-color: white;">-->
+      <!--<i class="material-icons" style="color: rgb(112, 114, 114);">assignment</i>-->
+      <!--</a>-->
+      <!--</div>-->
     </div>
   </div>
   <!-- show total money left -->
@@ -81,7 +86,7 @@
     </div>
   </div>
 
-  <button md-fab class="bg-light-blue" style="position: fixed; bottom: 20px; right: 20px;">
+  <button md-fab class="" style="position: fixed; bottom: 20px; right: 20px; background-color: rgb(90, 180, 234);">
     <md-icon>add</md-icon>
   </button>
   <!--<div class="container" style="padding: 10px;">-->
