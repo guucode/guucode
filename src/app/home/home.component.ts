@@ -61,6 +61,9 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
       console.log(result);
+      if (result) {
+        this.logout();
+      }
     });
   }
 
