@@ -26,6 +26,7 @@ import {
   MdToolbarModule
 } from '@angular/material';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ListItemComponent } from './list-item/list-item.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     HomeComponent,
     MainComponent,
     FirebaseLoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ListItemComponent
   ],
   imports: [
     BrowserModule,
