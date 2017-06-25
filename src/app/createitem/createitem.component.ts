@@ -106,6 +106,7 @@ export class CreateitemComponent implements OnInit {
         console.log(data);
       } else {
         payname = this.select_type_pay[this.select_pay].$value;
+
         let items = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/');
         let checkmax = this.db.list('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/', {query: {}});
         let maxlength;
