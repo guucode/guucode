@@ -10,9 +10,9 @@
   </div>
   <!-- list item containter -->
   <div style="max-height: calc(100vh - 130px); overflow-y: auto;">
-    <app-list-item-day></app-list-item-day>
-    <app-list-item-day></app-list-item-day>
-    <app-list-item-day></app-list-item-day>
+    <div *ngFor="let item of list">
+      <app-list-item-day [data]="item" *ngIf="item"></app-list-item-day>
+    </div>
   </div>
 
 </div>

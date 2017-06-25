@@ -22,6 +22,8 @@ export class ListItemComponent implements OnInit {
   public month: string = '';
   public year: number = 0;
 
+  public list = [];
+
   constructor(private router: Router, public db: AngularFireDatabase) {
     if (!('uid' in localStorage)) {
       this.router.navigate(['/login']);
@@ -93,33 +95,35 @@ export class ListItemComponent implements OnInit {
     }
     /*end switch*/
 
+    console.log('my day: '+day);
+
     switch (day) {
       case 0: {
-        this.day = 'จันทร์';
+        this.day = 'อาทิตย์';
         break;
       }
       case 1: {
-        this.day = 'อังคาร';
+        this.day = 'จันทร์';
         break;
       }
       case 2: {
-        this.day = 'พุธ';
+        this.day = 'อังคาร';
         break;
       }
       case 3: {
-        this.day = 'พฤหัส';
+        this.day = 'พุธ';
         break;
       }
       case 4: {
-        this.day = 'ศุกร์';
+        this.day = 'พฤหัส';
         break;
       }
       case 5: {
-        this.day = 'เสาร์';
+        this.day = 'ศุกร์';
         break;
       }
       case 6: {
-        this.day = 'อาทิตย์';
+        this.day = 'เสาร์';
         break;
       }
     }
@@ -128,41 +132,50 @@ export class ListItemComponent implements OnInit {
     data.subscribe(queriedItems => {
       let result = queriedItems.val();
       if (result) {
-        console.log(result);
-        // if (result.incomeList.length > 0 || result.paymentList.length > 0) {
-        //   this.income = result.incomeList;
-        //   this.payment = result.paymentList;
-        //
-        //   this.income = this.income.map((item) => {
-        //     item['type'] = 0;
-        //     this.sumIncome = this.sumIncome + item['amount'];
-        //     return item;
-        //   });
-        //
-        //   this.payment = this.payment.map((item) => {
-        //     item['type'] = 1;
-        //     this.sumPayment = this.sumPayment + item['amount'];
-        //     return item;
-        //   });
-        //
-        //   let resulttt = this.income.concat(this.payment);
-        //
-        //   this.data = resulttt.sort((a, b) => {
-        //     if (a.timestamp < b.timestamp) {
-        //       return -1;
-        //     }
-        //     if (a.timestamp > b.timestamp) {
-        //       return 1;
-        //     }
-        //     // a must be equal to b
-        //     return 0;
-        //   });
-        //
-        //   /*set localStorage*/
-        //   localStorage.setItem('data',JSON.stringify(this.data));
-        //   localStorage.setItem('sumIncome',JSON.stringify(this.sumIncome));
-        //   localStorage.setItem('sumPayment',JSON.stringify(this.sumPayment));
-        // }
+        // console.log(result);
+
+        Object.keys(result).forEach(key => {
+          let value = result[key];
+          // console.log(value);
+          if (result[key].incomeList.length > 0 || result.paymentList.length > 0) {
+            let income = result[key].incomeList;
+            let payment = result[key].paymentList;
+
+            income = income.map((item) => {
+              item['type'] = 0;
+              return item;
+            });
+
+            payment = payment.map((item) => {
+              item['type'] = 1;
+              return item;
+            });
+
+            let resultMerge = income.concat(payment);
+
+            let dataPerDay = resultMerge.sort((a, b) => {
+              if (a.timestamp < b.timestamp) {
+                return -1;
+              }
+              if (a.timestamp > b.timestamp) {
+                return 1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+
+            dataPerDay['date'] = key;
+            let myDate = new Date(year+'-'+month+'-'+key);
+            console.log(year+'-'+month+'-'+key);
+            console.log(myDate);
+            console.log(myDate.getDay());
+            dataPerDay['day'] = myDate.getDay();
+            dataPerDay['month'] = month;
+            dataPerDay['year'] = this.year;
+
+            this.list[key] = dataPerDay;
+          }
+        });
       }else{
         console.log('no result');
       }
@@ -170,6 +183,8 @@ export class ListItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('in list-item');
+    console.log(this.list);
   }
 
 }

@@ -100,33 +100,35 @@ export class HomeComponent implements OnInit {
     }
     /*end switch*/
 
+    console.log('my day: '+day);
+
     switch (day) {
       case 0: {
-        this.day = 'จันทร์';
+        this.day = 'อาทิตย์';
         break;
       }
       case 1: {
-        this.day = 'อังคาร';
+        this.day = 'จันทร์';
         break;
       }
       case 2: {
-        this.day = 'พุธ';
+        this.day = 'อังคาร';
         break;
       }
       case 3: {
-        this.day = 'พฤหัส';
+        this.day = 'พุธ';
         break;
       }
       case 4: {
-        this.day = 'ศุกร์';
+        this.day = 'พฤหัส';
         break;
       }
       case 5: {
-        this.day = 'เสาร์';
+        this.day = 'ศุกร์';
         break;
       }
       case 6: {
-        this.day = 'อาทิตย์';
+        this.day = 'เสาร์';
         break;
       }
     }
