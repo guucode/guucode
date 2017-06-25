@@ -1,13 +1,15 @@
 <div class="main-bg" style="height: calc(100vh);">
   <md-sidenav-container style="height: 100vh;">
     <md-sidenav class="main-bg" mode="over" #sidenav>
-      <div class="bg-light-blue" style="padding: 20px 0;">
+      <div class="bg-light-blue" style="padding: 20px 0 10px;">
         <img src="{{photoURL}}" alt="User icon"
              onerror="this.src='../../assets/images/user.ico'"
              style="width: 50px; border-radius: 50%; display: block; margin: 0 auto;">
+        <p class="txt-center txt-white">{{email}}</p>
       </div>
       <div>
-        <p class="paddingLeftRight20"><i class="material-icons" style="vertical-align: sub;">equalizer</i> สถิติ</p>
+        <p routerLink="/stats" class="paddingLeftRight20"><i class="material-icons" style="vertical-align: sub;">equalizer</i>
+          สถิติ</p>
       </div>
       <div>
         <p *ngIf="providerId === 'password'" (click)="openResetPasswordDialog(); sidenav.close();"

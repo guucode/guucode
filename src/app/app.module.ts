@@ -10,6 +10,9 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 
+// ng2-chart
+import {ChartsModule} from 'ng2-charts';
+
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {MainComponent} from './main/main.component';
@@ -99,7 +102,8 @@ const appRoutes: Routes = [
     MdProgressSpinnerModule,
     MdSlideToggleModule,
     MdSidenavModule,
-    MdDialogModule
+    MdDialogModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
