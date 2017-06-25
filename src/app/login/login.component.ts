@@ -81,8 +81,10 @@ export class LoginComponent implements OnInit {
 
   setUserDateToLocalStorage(userData) {
     if (userData) {
+      let email;
+      email = !userData.email || userData.email === null || userData.email === 'null' ? '' : userData.email;
       localStorage.setItem('displayName', userData.displayName);
-      localStorage.setItem('email', userData.email);
+      localStorage.setItem('email', email);
       localStorage.setItem('uid', userData.uid);
       localStorage.setItem('photoURL', userData.photoURL);
       localStorage.setItem('providerId', userData.providerData[0].providerId);
