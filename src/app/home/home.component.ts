@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
   public displayName = '';
   public photoURL = '';
 
-  public day: string = '';
-  public date: number = 0;
-  public month: string = '';
-  public year: number = 0;
+  public day = '';
+  public date = 0;
+  public month = '';
+  public year = 0;
   // public user: Observable<firebase.User>;
   // public userInfo: Observable<firebase.UserInfo>;
   // data: FirebaseListObservable<any[]>;
@@ -144,11 +144,16 @@ export class HomeComponent implements OnInit {
     this.email = localStorage.getItem('email');
     this.displayName = localStorage.getItem('displayName');
     this.photoURL = localStorage.getItem('photoURL');
-    this.providerId = localStorage.getItem('providerId');   // password, google.com, facebook.com
+    this.providerId = localStorage.getItem('providerId');   // password, google.com, facebook.com userReload
+    const reloaded = localStorage.getItem('reloaded');
+    if (reloaded === null) {
+      localStorage.setItem('reloaded', '1');
+      window.location.reload();
+    }
 
-    const messaging = firebase.messaging();
-    this.requestPermission(messaging);
-    this.onTokenRefresh(messaging);
+    // const messaging = firebase.messaging();
+    // this.requestPermission(messaging);
+    // this.onTokenRefresh(messaging);
 
     /*get data*/
     if (today != localStorage.getItem('lastDateConnected')) {
@@ -189,31 +194,31 @@ export class HomeComponent implements OnInit {
             const allData = db.object('/accounts/' + this.uid + '/data', {preserveSnapshot: true});
             allData.subscribe(queriedItems => {
               const result = queriedItems.val();
-              let stat = {};
+              const stat = {};
               // console.log(result);
               if (result) {
                 stat['income'] = {};
                 stat['payment'] = {};
                 Object.keys(result).forEach(year => {
-                  let myYear = result[year];
+                  const myYear = result[year];
                   stat['income'][year] = {};
                   stat['payment'][year] = {};
                   Object.keys(myYear).forEach(month => {
-                    let myMonth = myYear[month];
+                    const myMonth = myYear[month];
                     Object.keys(myMonth).forEach(day => {
-                      let myDay = myMonth[day];
+                      const myDay = myMonth[day];
                       let monthIncome = 0;
                       let monthPayment = 0;
                       Object.keys(myDay).forEach(type => {
-                        let myType = myDay[type];
+                        const myType = myDay[type];
                         if (type == 'incomeList') {
                           Object.keys(myType).forEach(list => {
-                            let myList = myType[list];
+                            const myList = myType[list];
                             monthIncome = monthIncome + myList['amount'];
                           });
-                        }else{
+                        } else {
                           Object.keys(myType).forEach(list => {
-                            let myList = myType[list];
+                            const myList = myType[list];
                             console.log(myList);
                             monthPayment = monthPayment + myList['amount'];
                           });
@@ -230,12 +235,12 @@ export class HomeComponent implements OnInit {
                   });
                 });
 
-                localStorage.setItem('stat',JSON.stringify(stat));
+                localStorage.setItem('stat', JSON.stringify(stat));
               }
             });
 
             /*set localStorage*/
-            localStorage.setItem('lastDateConnected',today);
+            localStorage.setItem('lastDateConnected', today);
             localStorage.setItem('today', JSON.stringify(this.data));
             localStorage.setItem('sumIncome', JSON.stringify(this.sumIncome));
             localStorage.setItem('sumPayment', JSON.stringify(this.sumPayment));
@@ -243,7 +248,7 @@ export class HomeComponent implements OnInit {
         }
       });
     } else {
-      localStorage.setItem('lastDateConnected',today);
+      localStorage.setItem('lastDateConnected', today);
       this.data = JSON.parse(localStorage.getItem('today'));
       this.sumIncome = parseInt(localStorage.getItem('sumIncome'));
       this.sumPayment = parseInt(localStorage.getItem('sumPayment'));
