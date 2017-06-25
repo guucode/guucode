@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class CreateitemComponent implements OnInit {
   public select_pay: string;
   public text_detail: string;
 
-  constructor(db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
+  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     this.user = afAuth.authState;
     const fire_select_type_pay = db.list('/configs/paymentType', {
       query: {}
@@ -51,10 +52,79 @@ export class CreateitemComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.typeItem);
-    console.log(this.money);
-    console.log(this.select_save);
-    console.log(this.select_pay);
-    console.log(this.text_detail);
+    let data = {};
+    let uid;
+    this.user.subscribe(queriedItems => {
+      //if query success
+      uid = queriedItems.uid; // get user id
+      data[uid] = {};
+      data[uid]['data'] = {};
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth() + 1; //January is 0!
+      let yyyy = today.getFullYear();
+      let timestamp = today.getTime();
+      // items.push(data);
+      data[uid]['data'][yyyy] = {};
+      data[uid]['data'][yyyy][mm] = {};
+      data[uid]['data'][yyyy][mm][dd] = {};
+
+
+      // if (item.$key == this.select_save) {
+      //   payname = item.$value;
+      //   break;
+      // }
+      let items = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/incomeList/');
+      // items.set({});
+
+      if (typeof  this.money == 'undefined') {
+        this.money = '0';
+      }
+      if (typeof  this.text_detail == 'undefined') {
+        this.text_detail = '';
+      }
+      let payname = '';
+      let vthis = this;
+      if (this.typeItem == '0') {
+        payname = this.select_type_save[this.select_save].$value;
+
+        let items = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/incomeList/');
+        let checkmax = this.db.list('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/incomeList/', {query: {}});
+        let maxlength;
+        items.on("value", function (snapshot) {
+          maxlength = snapshot.numChildren();
+        });
+        let items_insert = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/incomeList/' + maxlength + '/');
+        data = {
+          'amount': vthis.money,
+          'timestamp': timestamp,
+          'typeId': vthis.select_save,
+          'typeName': payname,
+          'detail': vthis.text_detail
+        };
+        items_insert.set(data);
+        console.log(data);
+      } else {
+        payname = this.select_type_pay[this.select_pay].$value;
+        let items = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/');
+        let checkmax = this.db.list('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/', {query: {}});
+        let maxlength;
+        items.on("value", function (snapshot) {
+          maxlength = snapshot.numChildren();
+        });
+        let items_insert = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/' + maxlength + '/');
+        data = {
+          'amount': vthis.money,
+          'timestamp': timestamp,
+          'typeId': vthis.select_pay,
+          'typeName': payname,
+          'detail': vthis.text_detail
+        };
+        items_insert.set(data);
+        console.log(data);
+      }
+      this.router.navigate(['/home']);
+      return;
+    });
   }
 }
