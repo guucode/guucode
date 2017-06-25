@@ -10,8 +10,6 @@ export class ListItemDayComponent implements OnInit {
   @Input() data: any;
 
   constructor() {
-    console.log('in cons');
-    console.log(this.data);
   }
 
   getMyDay(day) {
@@ -82,8 +80,6 @@ export class ListItemDayComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('in init');
-    console.log(this.data);
   }
 
 }

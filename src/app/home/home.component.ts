@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
     const date = myDate.getDate();
     const month = myDate.getMonth() + 1;
     const year = myDate.getFullYear();
+    const today = year + '/' + month + '/' + date;
 
     this.date = date;
     this.year = year;
@@ -100,7 +101,7 @@ export class HomeComponent implements OnInit {
     }
     /*end switch*/
 
-    console.log('my day: '+day);
+    console.log('my day: ' + day);
 
     switch (day) {
       case 0: {
@@ -134,7 +135,6 @@ export class HomeComponent implements OnInit {
     }
     /*end switch*/
 
-
     /*check auth*/
     if (!('uid' in localStorage)) {
       this.router.navigate(['/login']);
@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
     this.onTokenRefresh(messaging);
 
     /*get data*/
-    if (!('data' in localStorage)) {
+    if (today != localStorage.getItem('lastDateConnected')) {
       const data = db.object('/accounts/' + this.uid + '/data/' + year + '/' + month + '/' + date, {preserveSnapshot: true});
       data.subscribe(queriedItems => {
         const result = queriedItems.val();
@@ -185,18 +185,71 @@ export class HomeComponent implements OnInit {
               return 0;
             });
 
+            /*get all data*/
+            const allData = db.object('/accounts/' + this.uid + '/data', {preserveSnapshot: true});
+            allData.subscribe(queriedItems => {
+              const result = queriedItems.val();
+              let stat = {};
+              // console.log(result);
+              if (result) {
+                stat['income'] = {};
+                stat['payment'] = {};
+                Object.keys(result).forEach(year => {
+                  let myYear = result[year];
+                  stat['income'][year] = {};
+                  stat['payment'][year] = {};
+                  Object.keys(myYear).forEach(month => {
+                    let myMonth = myYear[month];
+                    Object.keys(myMonth).forEach(day => {
+                      let myDay = myMonth[day];
+                      let monthIncome = 0;
+                      let monthPayment = 0;
+                      Object.keys(myDay).forEach(type => {
+                        let myType = myDay[type];
+                        if (type == 'incomeList') {
+                          Object.keys(myType).forEach(list => {
+                            let myList = myType[list];
+                            monthIncome = monthIncome + myList['amount'];
+                          });
+                        }else{
+                          Object.keys(myType).forEach(list => {
+                            let myList = myType[list];
+                            console.log(myList);
+                            monthPayment = monthPayment + myList['amount'];
+                          });
+                        }
+                      });
+
+                      /*add income stat*/
+                      stat['income'][year][month] = monthIncome;
+
+                      /*add payment stat*/
+                      stat['payment'][year][month] = monthPayment;
+
+                    });
+                  });
+                });
+
+                localStorage.setItem('stat',JSON.stringify(stat));
+              }
+            });
+
             /*set localStorage*/
-            localStorage.setItem('data', JSON.stringify(this.data));
+            localStorage.setItem('lastDateConnected',today);
+            localStorage.setItem('today', JSON.stringify(this.data));
             localStorage.setItem('sumIncome', JSON.stringify(this.sumIncome));
             localStorage.setItem('sumPayment', JSON.stringify(this.sumPayment));
           }
         }
       });
     } else {
-      this.data = JSON.parse(localStorage.getItem('data'));
+      localStorage.setItem('lastDateConnected',today);
+      this.data = JSON.parse(localStorage.getItem('today'));
       this.sumIncome = parseInt(localStorage.getItem('sumIncome'));
       this.sumPayment = parseInt(localStorage.getItem('sumPayment'));
     }
+
+
   }
 
   /*end cons*/

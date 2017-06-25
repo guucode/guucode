@@ -95,8 +95,6 @@ export class ListItemComponent implements OnInit {
     }
     /*end switch*/
 
-    console.log('my day: '+day);
-
     switch (day) {
       case 0: {
         this.day = 'อาทิตย์';
@@ -132,12 +130,9 @@ export class ListItemComponent implements OnInit {
     data.subscribe(queriedItems => {
       let result = queriedItems.val();
       if (result) {
-        // console.log(result);
 
         Object.keys(result).forEach(key => {
-          let value = result[key];
-          // console.log(value);
-          if (result[key].incomeList.length > 0 || result.paymentList.length > 0) {
+          if (result[key].incomeList.length > 0 || result[key].paymentList.length > 0) {
             let income = result[key].incomeList;
             let payment = result[key].paymentList;
 
@@ -166,9 +161,6 @@ export class ListItemComponent implements OnInit {
 
             dataPerDay['date'] = key;
             let myDate = new Date(year+'-'+month+'-'+key);
-            console.log(year+'-'+month+'-'+key);
-            console.log(myDate);
-            console.log(myDate.getDay());
             dataPerDay['day'] = myDate.getDay();
             dataPerDay['month'] = month;
             dataPerDay['year'] = this.year;
@@ -176,15 +168,11 @@ export class ListItemComponent implements OnInit {
             this.list[key] = dataPerDay;
           }
         });
-      }else{
-        console.log('no result');
       }
     });
   }
 
   ngOnInit() {
-    console.log('in list-item');
-    console.log(this.list);
   }
 
 }
