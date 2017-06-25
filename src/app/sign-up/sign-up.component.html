@@ -1,26 +1,26 @@
 <div class="signup-bg" style="padding: 10px;">
-  <i routerLink="/login" class="material-icons" style="float: right; color: white; font-size: 50px;">highlight_off</i>
-  <div class="content-container"
-       style="margin-top: 50px; width: 150px; height: 150px; background-color: rgba(255, 255, 255, 0.24); border-radius: 50%;">
-    <img src="../../assets/images/upload-img.png" alt=""
-         style="width: 100px;height: 100px;display: block;margin: auto; position: relative;top: 15%;">
+  <div style="overflow: hidden;">
+    <i routerLink="/login" class="material-icons" style="float: right; color: white; font-size: 50px;">highlight_off</i>
   </div>
-  <form #formData='ngForm' (ngSubmit)="onSubmit()">
-    <div class="content-container" style="padding: 0 20px; margin-top: 10px;">
-      <md-input-container class="width100Percent">
-        <input mdInput placeholder="EMAIL" type="email" [(ngModel)]="email" name="email" required="required">
-      </md-input-container>
-      <md-input-container class="width100Percent">
-        <input mdInput placeholder="PASSWORD" type="password" [(ngModel)]="password" name="password"
-               required="required">
-      </md-input-container>
-      <md-input-container class="width100Percent">
-        <input mdInput placeholder="RE-PASSWORD" type="password" [(ngModel)]="rePassword" name="rePassword"
-               required="required">
-      </md-input-container>
-    </div>
-    <div class="content-container paddingLeftRight20 paddingTopBottom10">
-      <button md-raised-button class="txt14px width100Percent" style="color: #0071BC;" type="submit">SIGN UP</button>
-    </div>
-  </form>
+  <div class="content-container">
+    <p class="txt-center txt-white" style="font-size: 25px; font-weight: 200; margin-bottom: 0;">Register</p>
+    <form #formData='ngForm' (ngSubmit)="onSubmit()">
+      <div class="content-container" style="padding: 0 20px; margin-top: 10px;">
+        <md-input-container class="width100Percent">
+          <input mdInput placeholder="EMAIL" type="email" [(ngModel)]="email" name="email" required="required">
+        </md-input-container>
+        <md-input-container class="width100Percent">
+          <input mdInput placeholder="PASSWORD" type="password" [(ngModel)]="password" name="password"
+                 required="required">
+        </md-input-container>
+        <md-input-container class="width100Percent">
+          <input mdInput placeholder="RE-PASSWORD" type="password" [(ngModel)]="rePassword" name="rePassword"
+                 required="required">
+        </md-input-container>
+      </div>
+      <div class="content-container paddingLeftRight20 paddingTopBottom10">
+        <button md-raised-button class="txt14px width100Percent" style="color: #0071BC;" type="submit">SIGN UP</button>
+      </div>
+    </form>
+  </div>
 </div>
