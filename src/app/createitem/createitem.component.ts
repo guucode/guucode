@@ -89,8 +89,7 @@ export class CreateitemComponent implements OnInit {
         payname = this.select_type_save[this.select_save].$value;
 
         let items = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/incomeList/');
-        let checkmax = this.db.list('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/incomeList/', {query: {}});
-        let maxlength;
+        let maxlength = 0;
         items.on("value", function (snapshot) {
           maxlength = snapshot.numChildren();
         });
@@ -108,8 +107,7 @@ export class CreateitemComponent implements OnInit {
         payname = this.select_type_pay[this.select_pay].$value;
 
         let items = firebase.database().ref('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/');
-        let checkmax = this.db.list('/accounts/' + uid + '/data/' + yyyy + '/' + mm + '/' + dd + '/paymentList/', {query: {}});
-        let maxlength;
+        let maxlength = 0;
         items.on("value", function (snapshot) {
           maxlength = snapshot.numChildren();
         });
