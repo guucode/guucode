@@ -103,6 +103,8 @@ export class CreateitemComponent implements OnInit {
         };
         items_insert.set(data);
         console.log(data);
+        let sumIncome = parseInt(localStorage.getItem('sumIncome')) + parseInt(vthis.money);
+        localStorage.setItem('sumIncome', JSON.stringify(sumIncome));
       } else {
         payname = this.select_type_pay[this.select_pay].$value;
 
@@ -121,6 +123,8 @@ export class CreateitemComponent implements OnInit {
         };
         items_insert.set(data);
         console.log(data);
+        let sumPayment = parseInt(localStorage.getItem('sumPayment')) + parseInt(vthis.money);
+        localStorage.setItem('sumPayment', JSON.stringify(sumPayment));
       }
       this.router.navigate(['/home']);
       return;

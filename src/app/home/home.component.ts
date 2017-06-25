@@ -156,7 +156,7 @@ export class HomeComponent implements OnInit {
     // this.onTokenRefresh(messaging);
 
     /*get data*/
-    if (today != localStorage.getItem('lastDateConnected')) {
+    // if (today != localStorage.getItem('lastDateConnected')) {
       const data = db.object('/accounts/' + this.uid + '/data/' + year + '/' + month + '/' + date, {preserveSnapshot: true});
       data.subscribe(queriedItems => {
         const result = queriedItems.val();
@@ -164,6 +164,14 @@ export class HomeComponent implements OnInit {
           if (result.incomeList.length > 0 || result.paymentList.length > 0) {
             this.income = result.incomeList;
             this.payment = result.paymentList;
+
+            if (!this.income) {
+              this.income = [];
+            }
+
+            if (!this.payment) {
+              this.payment = [];
+            }
 
             this.income = this.income.map((item) => {
               item['type'] = 0;
@@ -177,18 +185,27 @@ export class HomeComponent implements OnInit {
               return item;
             });
 
-            const resulttt = this.income.concat(this.payment);
+            if (this.income != [] && this.payment != []) {
+              const resulttt = this.income.concat(this.payment);
 
-            this.data = resulttt.sort((a, b) => {
-              if (a.timestamp < b.timestamp) {
-                return -1;
+              this.data = resulttt.sort((a, b) => {
+                if (a.timestamp < b.timestamp) {
+                  return -1;
+                }
+                if (a.timestamp > b.timestamp) {
+                  return 1;
+                }
+                // a must be equal to b
+                return 0;
+              });
+            }else{
+              if (this.income != []) {
+                this.data = this.income;
+              }else if (this.payment != []) {
+                this.data = this.payment;
               }
-              if (a.timestamp > b.timestamp) {
-                return 1;
-              }
-              // a must be equal to b
-              return 0;
-            });
+            }
+
 
             /*get all data*/
             const allData = db.object('/accounts/' + this.uid + '/data', {preserveSnapshot: true});
@@ -247,12 +264,13 @@ export class HomeComponent implements OnInit {
           }
         }
       });
-    } else {
-      localStorage.setItem('lastDateConnected', today);
-      this.data = JSON.parse(localStorage.getItem('today'));
-      this.sumIncome = parseInt(localStorage.getItem('sumIncome'));
-      this.sumPayment = parseInt(localStorage.getItem('sumPayment'));
-    }
+    // } else {
+    //   localStorage.setItem('lastDateConnected', today);
+    //   this.data = JSON.parse(localStorage.getItem('today'));
+    //   this.sumIncome = parseInt(localStorage.getItem('sumIncome'));
+    //   this.sumPayment = parseInt(localStorage.getItem('sumPayment'));
+    //
+    // }
 
 
   }

@@ -136,6 +136,14 @@ export class ListItemComponent implements OnInit {
             let income = result[key].incomeList;
             let payment = result[key].paymentList;
 
+            if (!income){
+              income = [];
+            }
+
+            if (!payment){
+              payment = [];
+            }
+
             income = income.map((item) => {
               item['type'] = 0;
               return item;
@@ -146,18 +154,29 @@ export class ListItemComponent implements OnInit {
               return item;
             });
 
-            let resultMerge = income.concat(payment);
+            let dataPerDay = [];
+            if (income != [] && payment != []) {
+              let resultMerge = income.concat(payment);
 
-            let dataPerDay = resultMerge.sort((a, b) => {
-              if (a.timestamp < b.timestamp) {
-                return -1;
+              dataPerDay = resultMerge.sort((a, b) => {
+                if (a.timestamp < b.timestamp) {
+                  return -1;
+                }
+                if (a.timestamp > b.timestamp) {
+                  return 1;
+                }
+                // a must be equal to b
+                return 0;
+              });
+
+              this.list[key] = dataPerDay;
+            }else{
+              if (income != [] ) {
+                dataPerDay = income;
+              }else if (payment != []){
+                dataPerDay = payment;
               }
-              if (a.timestamp > b.timestamp) {
-                return 1;
-              }
-              // a must be equal to b
-              return 0;
-            });
+            }
 
             dataPerDay['date'] = key;
             let myDate = new Date(year+'-'+month+'-'+key);
@@ -165,7 +184,7 @@ export class ListItemComponent implements OnInit {
             dataPerDay['month'] = month;
             dataPerDay['year'] = this.year;
 
-            this.list[key] = dataPerDay;
+
           }
         });
       }
