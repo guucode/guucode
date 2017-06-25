@@ -32,9 +32,10 @@ export class HomeComponent implements OnInit {
   // data: FirebaseListObservable<any[]>;
   public data = [];
   public income = [];
-  public sumIncome: number = 0;
+  public sumIncome = 0;
   public payment = [];
-  public sumPayment: number = 0;
+  public sumPayment = 0;
+  public providerId: string;
 
   selectedOption: string;
 
@@ -141,6 +142,7 @@ export class HomeComponent implements OnInit {
     this.email = localStorage.getItem('email');
     this.displayName = localStorage.getItem('displayName');
     this.photoURL = localStorage.getItem('photoURL');
+    this.providerId = localStorage.getItem('providerId');   // password, google.com, facebook.com
 
     const messaging = firebase.messaging();
     this.requestPermission(messaging);
@@ -148,9 +150,9 @@ export class HomeComponent implements OnInit {
 
     /*get data*/
     if (!('data' in localStorage)) {
-      const data = db.object('/accounts/' + this.uid + "/data/" + year + "/" + month + "/" + date, {preserveSnapshot: true});
+      const data = db.object('/accounts/' + this.uid + '/data/' + year + '/' + month + '/' + date, {preserveSnapshot: true});
       data.subscribe(queriedItems => {
-        let result = queriedItems.val();
+        const result = queriedItems.val();
         if (result) {
           if (result.incomeList.length > 0 || result.paymentList.length > 0) {
             this.income = result.incomeList;
@@ -168,7 +170,7 @@ export class HomeComponent implements OnInit {
               return item;
             });
 
-            let resulttt = this.income.concat(this.payment);
+            const resulttt = this.income.concat(this.payment);
 
             this.data = resulttt.sort((a, b) => {
               if (a.timestamp < b.timestamp) {

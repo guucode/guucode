@@ -38,6 +38,7 @@ import {ResetPasswordDialogComponent} from './reset-password-dialog/reset-passwo
 import {SignoutDialogComponent} from './signout-dialog/signout-dialog.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {ResetPasswordCompleteComponent} from './reset-password-complete/reset-password-complete.component';
+import {StatsComponent} from './stats/stats.component';
 export const firebaseConfig = config.firebase;
 
 const appRoutes: Routes = [
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'reset-password-complete', component: ResetPasswordCompleteComponent},
+  {path: 'stats', component: StatsComponent},
   {path: '**', component: LoginComponent}
 ];
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     ResetPasswordDialogComponent,
     SignoutDialogComponent,
     ResetPasswordComponent,
-    ResetPasswordCompleteComponent
+    ResetPasswordCompleteComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

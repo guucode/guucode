@@ -10,8 +10,9 @@
         <p class="paddingLeftRight20"><i class="material-icons" style="vertical-align: sub;">equalizer</i> สถิติ</p>
       </div>
       <div>
-        <p (click)="openResetPasswordDialog(); sidenav.close();" class="paddingLeftRight20"><i class="material-icons"
-                                                                                               style="vertical-align: sub;">settings_backup_restore</i>
+        <p *ngIf="providerId === 'password'" (click)="openResetPasswordDialog(); sidenav.close();"
+           class="paddingLeftRight20"><i class="material-icons"
+                                         style="vertical-align: sub;">settings_backup_restore</i>
           Reset password</p>
         <p (click)="openSignOutDialog(); sidenav.close();" class="paddingLeftRight20"><i class="material-icons"
                                                                                          style="vertical-align: sub;">exit_to_app</i>
